@@ -8,6 +8,9 @@ namespace FirstProgramm // оголошення нової "бібліотеки
         {
             Console.WriteLine("programm start");
             Console.WriteLine(DateTime.Now); // Теперішній час
+            string name = Console.ReadLine();
+            Console.WriteLine("hello " + name);
+            Console.ReadKey();
         }
     }
 }
