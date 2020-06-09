@@ -12,9 +12,21 @@ namespace FirstProgramm
             Console.WriteLine("name " + name + " age " + age);
         }
 
-        public User() { name = "null"; age = 0; }
-        public User(string name) { this.name = name; age = 1; }
-        public User(string name, int age) { this.name = name; this.age = age; }
+        public User()
+        {
+            name = "null";
+            age = 0;
+        }
+        public User(string name)
+        {
+            this.name = name;
+            age = 1;
+        }
+        public User(string name, int age)
+        {
+            this.name = name;
+            this.age = age;
+        }
     }
     class FirstProgramm
     {
