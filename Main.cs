@@ -1,6 +1,6 @@
-using System; // підключення "бібліотеки"
+using System; 
 
-namespace FirstProgramm // оголошення нової "бібліотеки" 
+namespace FirstProgramm 
 {
     class User
     {
@@ -18,7 +18,7 @@ namespace FirstProgramm // оголошення нової "бібліотеки
     }
     class FirstProgramm
     {
-        static void Main(string[] args) // метод
+        static void Main(string[] args) 
         {
             User alex = new User();
             User konb = new User("konb");
@@ -29,7 +29,7 @@ namespace FirstProgramm // оголошення нової "бібліотеки
             petro.get_info();
 
             Console.WriteLine("programm start");
-            Console.WriteLine(DateTime.Now); // Теперішній час
+            Console.WriteLine(DateTime.Now); 
             string name = Console.ReadLine();
             Console.WriteLine("hello " + name);
             Console.ReadKey();
