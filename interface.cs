@@ -13,7 +13,6 @@ namespace Writetext
 
         public void WtriteText(string text)
         {
-            text += " some";
             Writer.Write(text);
         }
     }
@@ -46,11 +45,11 @@ namespace Writetext
             TextWriter TEXT = new TextWriter();
 
             TEXT.Writer = new Type1();
-            TEXT.WtriteText("text");
+            TEXT.WtriteText("text"); // text
             TEXT.Writer = new Type2();
-            TEXT.WtriteText("text");
+            TEXT.WtriteText("text"); // <text>
             TEXT.Writer = new Type3();
-            TEXT.WtriteText("text");
+            TEXT.WtriteText("text"); // {text}
         }
     }
 }
