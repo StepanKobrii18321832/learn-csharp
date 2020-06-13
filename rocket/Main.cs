@@ -9,27 +9,29 @@ namespace RocketProgramm
         {
             Rocket FirstRocket = new Rocket();
 
-            FirstRocket.Header = new RocketHeader();
+            FirstRocket.Header = new HeaderA100();
             FirstRocket.Engine = new EngineHF450();
+            FirstRocket.Body = new BodyKyev();
 
-            int speed = MaxSpeedRocket(FirstRocket.Engine.Power, FirstRocket.Weight);
+            double speed = MaxSpeedRocket(FirstRocket.Engine.Power, FirstRocket.Weight);
             Console.WriteLine("Max speed = " + speed);
             if (speed > 50)
             {
                 FirstRocket.Engine.Start();
+                Thread.Sleep(5000);
+                FirstRocket.Header.Message("things are good");
+                FirstRocket.Engine.End();
             }
             else
             {
                 Console.WriteLine("won't take off");
             }
-            Thread.Sleep(5000);
-            FirstRocket.Header.Message("things are good");
-            FirstRocket.Engine.End();
+            
         }
 
-        public static int MaxSpeedRocket(int power, int mass)
+        public static double MaxSpeedRocket(int power, int mass)
         {
-            return (mass / power * 5) + 100; 
+            return ((power * 62) / mass); 
         }
     }
 }

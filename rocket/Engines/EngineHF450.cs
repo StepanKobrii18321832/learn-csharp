@@ -14,7 +14,7 @@ namespace RocketProgramm
         public EngineHF450()
         {
             Weight = 500;
-            Power = 1000;
+            Power = 23000;
             Color = "yellow";
             Material = "steel";
             Manufacturer = "Ukraine";
