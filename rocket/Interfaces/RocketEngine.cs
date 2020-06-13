@@ -6,5 +6,6 @@ namespace RocketProgramm
         void End();
         int Weight { get; }
         int Power { get; }
+        int FuelConsumption { get; }
     }
 }

@@ -19,39 +19,14 @@ namespace RocketProgramm
             SecondRocket.Engine = new EngineHF600();
             SecondRocket.Body = new BodyKyev();
 
-            Console.WriteLine("test first rocket");
-            RocketLaunch(FirstRocket);
+            Console.WriteLine("\ntest first rocket\n");
+            FirstRocket.Launch();
+            
 
-            Console.WriteLine("test second rocket");
-            RocketLaunch(SecondRocket);
+            Console.WriteLine("\ntest second rocket\n");
+            SecondRocket.Launch();
             
             
-        }
-
-        public static void RocketLaunch(Rocket rocket)
-        {
-            double speed = MaxSpeedRocket(rocket.Engine.Power, rocket.Weight);
-            Console.WriteLine("Max speed = " + speed);
-            if (speed > 50)
-            {
-                for (int i = 10; i > 0; i--)
-                {
-                    Thread.Sleep(1000);
-                    Console.WriteLine(i);
-                }
-                rocket.Engine.Start();
-                rocket.Header.Message("things are good");
-                rocket.Engine.End();
-            }
-            else
-            {
-                Console.WriteLine("won't take off");
-            }
-        }
-
-        public static double MaxSpeedRocket(int power, int mass)
-        {
-            return ((power * 62) / mass); 
-        }
+        }        
     }
 }

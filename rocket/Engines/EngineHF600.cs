@@ -7,6 +7,7 @@ namespace RocketProgramm
     {
         public int Weight { get; private set; }
         public int Power { get; private set; }
+        public int FuelConsumption { get; private set; }
         public string Color { get; private set; }
         public string Material { get; private set; }
         public string Manufacturer { get; private set; }
@@ -15,6 +16,7 @@ namespace RocketProgramm
         {
             Weight = 600;
             Power = 28000;
+            FuelConsumption = 104;
             Color = "red";
             Material = "steel";
             Manufacturer = "Ukraine";
