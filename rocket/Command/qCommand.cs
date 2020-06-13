@@ -14,7 +14,7 @@ namespace RocketProgramm
 
         public override void Execute()
         {
-            Console.WriteLine("(uwu)");
+            Console.Write("(uwu)");
             Environment.Exit( 0 );
         }
     }
