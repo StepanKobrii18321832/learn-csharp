@@ -1,30 +1,51 @@
-using System;
 using System.Threading;
 
 namespace RocketProgramm
 {
-    partial class RocketProgramm
-    {
-        public static void Main()
+    //Data data = new Data();
+    static class Data
         {
-            Console.WriteLine("(owo)");
-            Command[] CommandList = {
+            public static Command[] CommandList = {
                 new FirstCommand(),
-                new qCommand()
+                new qCommand(),
+                new NewRocketCommand()
             };
 
-            while(true)
-            {
-                Console.Write("> ");
-                string str = Console.ReadLine();
-                for (int i = 0; i < CommandList.Length; i++)
-                {
-                    CommandList[i].Contains(str);
-                }
-            }
+            public static Rocket[] RocketList = {
+                new Rocket(),
+                new Rocket()
+            };
+        }
+    partial class RocketProgramm
+    {
+        
+        
+        public static void Main()
+        {
             
+            // Command[] CommandList = {
+            //     new FirstCommand(),
+            //     new qCommand(),
+            //     new NewRocketCommand()
+            // };
+
+            // Rocket[] RocketList = {
+            //     new Rocket(),
+            //     new Rocket()
+            // };
             
+
+            Data.RocketList[0].Header = new HeaderA100();
+            Data.RocketList[0].Engine = new EngineHF450();
+            Data.RocketList[0].Body = new BodyKyev2();
+
+            Data.RocketList[1].Header = new HeaderA150();
+            Data.RocketList[1].Engine = new EngineHF600();
+            Data.RocketList[1].Body = new BodyKyev();
+
+            RocketConsole ConsoleOne = new RocketConsole(Data.CommandList);
+            ConsoleOne.Run();
             
-        }        
+        }   
     }
 }

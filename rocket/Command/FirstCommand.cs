@@ -32,8 +32,6 @@ namespace RocketProgramm
 
             Console.WriteLine("\ntest second rocket\n");
             SecondRocket.Launch();
-            //Console.WriteLine("test command");
-            //Environment.Exit( 0 );
         }
     }
 }
