@@ -11,7 +11,7 @@ namespace RocketProgramm
         public string Material { get; private set; }
         public string Manufacturer { get; private set; }
 
-        public EngineHF450()
+        public EngineHF600()
         {
             Weight = 600;
             Power = 28000;
@@ -30,6 +30,7 @@ namespace RocketProgramm
             Console.WriteLine("100%");
             Thread.Sleep(100);
             Console.WriteLine("Engine started");
+            Thread.Sleep(5000);
         }
 
         public void End()

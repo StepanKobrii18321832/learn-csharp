@@ -30,6 +30,7 @@ namespace RocketProgramm
             Console.WriteLine("100%");
             Thread.Sleep(100);
             Console.WriteLine("Engine started");
+            Thread.Sleep(5000);
         }
 
         public void End()

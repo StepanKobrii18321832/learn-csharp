@@ -7,7 +7,7 @@ namespace RocketProgramm
         public int Human { get; private set; }
         public int Weight { get; private set; }
 
-        public HeaderA100()
+        public HeaderA150()
         {
             Human = 2;
             Weight = 3300;
