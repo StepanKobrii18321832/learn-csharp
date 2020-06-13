@@ -3,28 +3,26 @@ using System.Threading;
 
 namespace RocketProgramm
 {
-    class RocketProgramm
+    partial class RocketProgramm
     {
         public static void Main()
         {
-            Rocket FirstRocket = new Rocket();
+            Console.WriteLine("(owo)");
+            Command[] CommandList = {
+                new FirstCommand(),
+                new qCommand()
+            };
 
-            FirstRocket.Header = new HeaderA100();
-            FirstRocket.Engine = new EngineHF450();
-            FirstRocket.Body = new BodyKyev2();
-
-            Rocket SecondRocket = new Rocket();
-
-            SecondRocket.Header = new HeaderA150();
-            SecondRocket.Engine = new EngineHF600();
-            SecondRocket.Body = new BodyKyev();
-
-            Console.WriteLine("\ntest first rocket\n");
-            FirstRocket.Launch();
+            while(true)
+            {
+                Console.Write("> ");
+                string str = Console.ReadLine();
+                for (int i = 0; i < CommandList.Length; i++)
+                {
+                    CommandList[i].Contains(str);
+                }
+            }
             
-
-            Console.WriteLine("\ntest second rocket\n");
-            SecondRocket.Launch();
             
             
         }        
