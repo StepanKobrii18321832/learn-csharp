@@ -12,7 +12,7 @@ namespace RocketProgramm
         {
             get
             {
-                return (Header.Human * 100) + Header.Weight + Engine.Weight + Body.Weight;
+                return (Header.Human * 100) + Header.Weight + Engine.Weight + Body.Weight + (Body.FuelVolume / 100);
             }
         }
 
@@ -20,7 +20,7 @@ namespace RocketProgramm
         {
             get
             {
-                return ((Engine.Power * 62) / Weight);
+                return ((Engine.Power * 70) / Weight);
             }
         }
 
@@ -39,11 +39,6 @@ namespace RocketProgramm
 
             if (MaxSpeed > 100 && Distance > 100000)
             {
-                for (int i = 10; i > 0; i--)
-                {
-                    Thread.Sleep(1000);
-                    Console.WriteLine(i);
-                }
                 Engine.Start();
                 Header.Message("things are good");
                 Engine.End();

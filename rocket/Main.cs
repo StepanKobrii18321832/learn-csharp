@@ -11,7 +11,7 @@ namespace RocketProgramm
 
             FirstRocket.Header = new HeaderA100();
             FirstRocket.Engine = new EngineHF450();
-            FirstRocket.Body = new BodyKyev();
+            FirstRocket.Body = new BodyKyev2();
 
             Rocket SecondRocket = new Rocket();
 
