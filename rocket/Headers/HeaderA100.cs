@@ -19,11 +19,11 @@ namespace RocketProgramm
         public void Message(string text)
         {
             Thread.Sleep(1000);
-            Console.WriteLine("-------open-chanel-------");
+            Console.WriteLine("\n\n\n\n-------open-chanel-------\n\n\n\n");
             Thread.Sleep(1000);
             Console.WriteLine(text);
             Thread.Sleep(1000);
-            Console.WriteLine("-------close-chanel------");
+            Console.WriteLine("\n\n\n\n-------close-chanel------\n\n\n\n");
             Thread.Sleep(1000);
         }
     }

@@ -18,7 +18,6 @@ namespace RocketProgramm
                 Console.WriteLine("(owo)");
                 while(true)
                 {
-                    Console.Write("> ");
                     string str = Console.ReadLine();
                     for (int i = 0; i < List.Length; i++)
                     {

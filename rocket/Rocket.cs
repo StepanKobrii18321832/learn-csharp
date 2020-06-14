@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace RocketProgramm
 {
@@ -33,7 +34,7 @@ namespace RocketProgramm
         }
 
         public string Name { get; set; }
-
+        public double Fuel;
         public Rocket() {}
 
         public Rocket (string name)
@@ -41,16 +42,47 @@ namespace RocketProgramm
             Name = name;
         }
 
-        public void Launch ()
+        private async void IntoOrbit()
         {
-            Console.WriteLine("Max speed = " + MaxSpeed);
-            Console.WriteLine("Max distance = " + Distance);
+            Engine.Start();
+            bool firstMessage = true;
+            bool secondMessage = true;
+            bool finishMessage = true;
+            for (double currentDistance = 0; currentDistance < 100000; currentDistance += MaxSpeed)
+            {
+                Thread.Sleep(1000);
+                Fuel -= Engine.FuelConsumption;
+                if (firstMessage && currentDistance > 10000)
+                {
+                    await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nsuccessful takeoff\ndistance: " + 
+                    currentDistance + "\nfuel: " + (100 * Fuel / Body.FuelVolume) + "%"));
+                    firstMessage = false;
+                }
+                if (secondMessage && currentDistance > 50000)
+                {
+                    await Task.Run(()=>Header.Message("message from the rocket " + Name + "\ndumping empty fuel tanks\ndistance: " +
+                    currentDistance + "\nfuel: " + (100 * Fuel / Body.FuelVolume) + "%"));
+                    secondMessage = false;
+                }
+                if (finishMessage && currentDistance > 95000)
+                {
+                    await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nentry into orbit\ndistance: " + 
+                    currentDistance + "\nfuel: " + (100 * Fuel / Body.FuelVolume) + "%"));
+                    finishMessage = false;
+                }
+            }
+            await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nconfirm the entry into orbit\nfuel: " +
+            (100 * Fuel / Body.FuelVolume) + "%"));
+            Engine.End();
+        }
+
+        public async void Launch()
+        {
+            Fuel = Body.FuelVolume;
 
             if (MaxSpeed > 100 && Distance > 100000)
             {
-                Engine.Start();
-                Header.Message("things are good");
-                Engine.End();
+                await Task.Run(()=>IntoOrbit()); 
             }
             else if (MaxSpeed > 100)
             {

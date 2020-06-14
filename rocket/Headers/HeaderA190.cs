@@ -17,9 +17,9 @@ namespace RocketProgramm
 
         public void Message(string text)
         {
-            Console.WriteLine("> open-chanel");
-            Console.WriteLine("> " + text);
-            Console.WriteLine("> close-chanel");
+            Console.WriteLine("\n\n\n\nopen-chanel\n\n\n\n");
+            Console.WriteLine(text);
+            Console.WriteLine("\n\n\n\nclose-chanel\n\n\n\n");
         }
     }
 }
