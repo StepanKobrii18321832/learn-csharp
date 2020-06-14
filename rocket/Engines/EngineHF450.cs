@@ -11,6 +11,7 @@ namespace RocketProgramm
         public string Color { get; private set; }
         public string Material { get; private set; }
         public string Manufacturer { get; private set; }
+        public string Name { get; private set; }
 
         public EngineHF450()
         {
@@ -20,6 +21,7 @@ namespace RocketProgramm
             Color = "yellow";
             Material = "steel";
             Manufacturer = "Ukraine";
+            Name = "HF450";
         }
 
         public void Start()

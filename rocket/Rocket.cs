@@ -32,6 +32,15 @@ namespace RocketProgramm
             }
         }
 
+        public string Name { get; set; }
+
+        public Rocket() {}
+
+        public Rocket (string name)
+        {
+            Name = name;
+        }
+
         public void Launch ()
         {
             Console.WriteLine("Max speed = " + MaxSpeed);

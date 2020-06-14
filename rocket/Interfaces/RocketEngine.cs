@@ -7,5 +7,6 @@ namespace RocketProgramm
         int Weight { get; }
         int Power { get; }
         int FuelConsumption { get; }
+        string Name { get; }
     }
 }

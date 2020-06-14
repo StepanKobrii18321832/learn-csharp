@@ -7,6 +7,7 @@ namespace RocketProgramm
         public string Color { get; private set; }
         public string Material { get; private set; }
         public string Manufacturer { get; private set; }
+        public string Name { get; private set; }
         public BodyKyev2()
         {
             Weight = 2500;
@@ -14,6 +15,7 @@ namespace RocketProgramm
             Color = "red";
             Material = "steel";
             Manufacturer = "Russia";
+            Name = "Kyev-2";
         }
     }
 }
