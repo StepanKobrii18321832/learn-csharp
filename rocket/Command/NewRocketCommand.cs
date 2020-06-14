@@ -8,7 +8,7 @@ namespace RocketProgramm
         {
             get
             {
-                return "new rocket";
+                return "rocket new";
             }
         }
 
@@ -19,7 +19,6 @@ namespace RocketProgramm
             Console.Write("Name: ");
             string name = Console.ReadLine();
             Data.RocketList[RocketIndex] = new Rocket(name);
-            //element rocket read and create
             Console.WriteLine("Header list");
             for (int i = 0; i < Data.HeaderList.Length; i++)
             {

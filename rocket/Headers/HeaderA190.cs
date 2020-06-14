@@ -1,30 +1,25 @@
 using System;
-using System.Threading;
 
 namespace RocketProgramm
 {
-    class HeaderA150 : RocketHeader
+    class HeaderA190 : RocketHeader
     {
         public int Human { get; private set; }
         public int Weight { get; private set; }
         public string Name { get; private set; }
 
-        public HeaderA150()
+        public HeaderA190()
         {
             Human = 2;
-            Weight = 3300;
-            Name = "A150";
+            Weight = 2000;
+            Name = "A190";
         }
 
         public void Message(string text)
         {
-            Thread.Sleep(500);
             Console.WriteLine("> open-chanel");
-            Thread.Sleep(500);
             Console.WriteLine("> " + text);
-            Thread.Sleep(500);
             Console.WriteLine("> close-chanel");
-            Thread.Sleep(500);
         }
     }
 }

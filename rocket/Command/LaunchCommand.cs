@@ -8,7 +8,7 @@ namespace RocketProgramm
         {
             get
             {
-                return "launch";
+                return "rocket launch";
             }
         }
 

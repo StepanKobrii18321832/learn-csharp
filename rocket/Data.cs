@@ -7,7 +7,8 @@ namespace RocketProgramm
             new qCommand(),
             new NewRocketCommand(),
             new RocketListCommand(),
-            new LaunchCommand()
+            new LaunchCommand(),
+            new RocketInfoCommand()
         };
 
         public static Rocket[] RocketList = {
@@ -17,17 +18,21 @@ namespace RocketProgramm
 
         public static RocketBody[] BodyList = {
             new BodyKyev(),
-            new BodyKyev2()
+            new BodyKyev2(),
+            new BodyF1()
         };
 
         public static RocketEngine[] EngineList = {
             new EngineHF450(),
-            new EngineHF600()
+            new EngineHF600(),
+            new EnginePRP4(),
+            new EngineRRP4()
         };
 
         public static RocketHeader[] HeaderList = {
             new HeaderA100(),
-            new HeaderA150()
+            new HeaderA150(),
+            new HeaderA190()
         };
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 
 namespace RocketProgramm
 {
@@ -17,9 +18,13 @@ namespace RocketProgramm
 
         public void Message(string text)
         {
+            Thread.Sleep(1000);
             Console.WriteLine("-------open-chanel-------");
+            Thread.Sleep(1000);
             Console.WriteLine(text);
+            Thread.Sleep(1000);
             Console.WriteLine("-------close-chanel------");
+            Thread.Sleep(1000);
         }
     }
 }
