@@ -16,6 +16,10 @@ namespace RocketProgramm
             new Rocket("A150, Kyev-2, HF600")
         };
 
+        public static Rocket[] RocketListInOrbit = {
+
+        };
+
         public static RocketBody[] BodyList = {
             new BodyKyev(),
             new BodyKyev2(),
@@ -34,5 +38,14 @@ namespace RocketProgramm
             new HeaderA150(),
             new HeaderA190()
         };
+
+        public static void DeleteRocket(Rocket rocket)
+        {
+            for (int i = 0; i < RocketList.Length; i++)
+            {
+                if (RocketList[i].Name == rocket.Name) RocketList[i] = null;
+            }
+            
+        }
     }
 }

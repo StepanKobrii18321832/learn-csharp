@@ -17,13 +17,14 @@ namespace RocketProgramm
             Console.WriteLine("Rocket list");
             for (int i = 0; i < Data.RocketList.Length; i++)
             {
-                Console.WriteLine(i + " " + Data.RocketList[i].Name);
+                if (Data.RocketList[i] != null) Console.WriteLine(i + " " + Data.RocketList[i].Name);
+                else Console.WriteLine(i);
             }
 
             string idstr = Console.ReadLine();
             int RocketNumber = Convert.ToInt32(idstr);
-
-            Data.RocketList[RocketNumber].Launch();
+            if (Data.RocketList[RocketNumber] != null) Data.RocketList[RocketNumber].Launch();
+            else Console.WriteLine("its not rocket");
         }
     }
 }

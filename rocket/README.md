@@ -21,3 +21,7 @@ v1.2
 - rocket message output **changed**
 - console view **changed**
 - The rocket now flies along the way, sending a status signal **You can launch several rockets at the same time**
+
+v1.2.1
+
+- bug fix

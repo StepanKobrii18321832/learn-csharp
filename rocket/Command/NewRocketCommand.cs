@@ -14,8 +14,22 @@ namespace RocketProgramm
 
         public override void Execute()
         {
-            Array.Resize(ref Data.RocketList, Data.RocketList.Length + 1);
-            int RocketIndex = Data.RocketList.Length - 1;
+            bool flag = true;
+            int RocketIndex = 0;
+            for (int i = 0; i < Data.RocketList.Length; i++)
+            {
+                if (Data.RocketList[i] == null && flag) 
+                {
+                    RocketIndex = i;
+                    flag = false;
+                } 
+            }
+            if (flag)
+            {
+                Array.Resize(ref Data.RocketList, Data.RocketList.Length + 1);
+                RocketIndex = Data.RocketList.Length - 1;
+            } // search for free space in the array
+
             Console.Write("Name: ");
             string name = Console.ReadLine();
             Data.RocketList[RocketIndex] = new Rocket(name);
@@ -24,30 +38,66 @@ namespace RocketProgramm
             {
                 Console.WriteLine(i + " " + Data.HeaderList[i].Name);
             }
-            string idHeader = Console.ReadLine();
-            int HeaderNumber = Convert.ToInt32(idHeader);
+            flag = true;
+            while (flag)
+            {
+                Console.Write("Header number: ");
+                string idHeader = Console.ReadLine();
+                int HeaderNumber = Convert.ToInt32(idHeader);
+                if (Data.HeaderList[HeaderNumber] != null) 
+                {
+                    Data.RocketList[RocketIndex].Header = Data.HeaderList[HeaderNumber];
+                    flag = false;
+                }
+                else 
+                {
+                    Console.WriteLine("its not header");
+                }
+            }
 
             Console.WriteLine("Body list");
             for (int i = 0; i < Data.BodyList.Length; i++)
             {
                 Console.WriteLine(i + " " + Data.BodyList[i].Name);
             }
-            string idBody = Console.ReadLine();
-            int BodyNumber = Convert.ToInt32(idBody);
+            flag = true;
+            while (flag)
+            {
+                Console.Write("Body number: ");
+                string idBody = Console.ReadLine();
+                int BodyNumber = Convert.ToInt32(idBody);
+                if (Data.BodyList[BodyNumber] != null)
+                {
+                    Data.RocketList[RocketIndex].Body = Data.BodyList[BodyNumber];
+                    flag = false;
+                }
+                else
+                {
+                    Console.WriteLine("its not body");
+                }
+            }
+
 
             Console.WriteLine("Engine list");
             for (int i = 0; i < Data.EngineList.Length; i++)
             {
                 Console.WriteLine(i + " " + Data.EngineList[i].Name);
             }
-            string idEngine = Console.ReadLine();
-            int EngineNumber = Convert.ToInt32(idEngine);
+            flag = true;
+            while (flag)
+            {
+                Console.Write("Engine number: ");
+                string idEngine = Console.ReadLine();
+                int EngineNumber = Convert.ToInt32(idEngine);
+                if (Data.EngineList[EngineNumber] != null)
+                {
+                    Data.RocketList[RocketIndex].Engine = Data.EngineList[EngineNumber];
+                    flag = false;
+                }
+            }
 
             Console.WriteLine("Rocket ctrated");
-
-            Data.RocketList[RocketIndex].Header = Data.HeaderList[HeaderNumber];
-            Data.RocketList[RocketIndex].Body = Data.BodyList[BodyNumber];
-            Data.RocketList[RocketIndex].Engine = Data.EngineList[EngineNumber];
+            // maybe this code is shit. I wrote this in the morning
         }
     }
 }

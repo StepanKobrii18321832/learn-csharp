@@ -82,6 +82,7 @@ namespace RocketProgramm
 
             if (MaxSpeed > 100 && Distance > 100000)
             {
+                Data.DeleteRocket(this);
                 await Task.Run(()=>IntoOrbit()); 
             }
             else if (MaxSpeed > 100)

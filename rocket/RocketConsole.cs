@@ -19,10 +19,12 @@ namespace RocketProgramm
                 while(true)
                 {
                     string str = Console.ReadLine();
+                    bool flag = true;
                     for (int i = 0; i < List.Length; i++)
                     {
-                        List[i].Contains(str);
+                        if (List[i].Contains(str)) flag = false;
                     }
+                    if (flag) Console.WriteLine("unknown command");
                 }
             }
         }     
