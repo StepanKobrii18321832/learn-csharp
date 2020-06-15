@@ -26,13 +26,7 @@ namespace RocketProgramm
 
         public void Start()
         {
-            Thread.Sleep(100);
-            Console.WriteLine("50%");
-            Thread.Sleep(100);
-            Console.WriteLine("99%");
-            Thread.Sleep(800);
-            Console.WriteLine("100%");
-            Thread.Sleep(100);
+            Thread.Sleep(1000);
             Console.WriteLine("Engine started");
             Thread.Sleep(5000);
         }
@@ -40,11 +34,6 @@ namespace RocketProgramm
         public void End()
         {
             Thread.Sleep(100);
-            Console.WriteLine("50%");
-            Thread.Sleep(100);
-            Console.WriteLine("99%");
-            Thread.Sleep(10);
-            Console.WriteLine("100%");
             Console.WriteLine("Engine ended");
         }
     }

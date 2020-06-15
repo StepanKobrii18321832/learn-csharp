@@ -22,8 +22,11 @@ namespace RocketProgramm
             }
 
             string idstr = Console.ReadLine();
-            int RocketNumber = Convert.ToInt32(idstr);
-            if (Data.RocketList[RocketNumber] != null)
+            int RocketNumber;
+            bool notstr = Int32.TryParse(idstr, out RocketNumber);
+            if (notstr && RocketNumber >= 0 && 
+            RocketNumber < Data.RocketList.Length && 
+            Data.RocketList[RocketNumber] != null)
             {
                 Rocket RI = Data.RocketList[RocketNumber]; // RI - RocketInfo
 

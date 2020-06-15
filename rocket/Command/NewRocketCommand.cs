@@ -43,8 +43,9 @@ namespace RocketProgramm
             {
                 Console.Write("Header number: ");
                 string idHeader = Console.ReadLine();
-                int HeaderNumber = Convert.ToInt32(idHeader);
-                if (Data.HeaderList[HeaderNumber] != null) 
+                int HeaderNumber;
+                bool notstrH = Int32.TryParse(idHeader, out HeaderNumber);
+                if (notstrH && HeaderNumber >= 0 && HeaderNumber < Data.HeaderList.Length) 
                 {
                     Data.RocketList[RocketIndex].Header = Data.HeaderList[HeaderNumber];
                     flag = false;
@@ -65,8 +66,9 @@ namespace RocketProgramm
             {
                 Console.Write("Body number: ");
                 string idBody = Console.ReadLine();
-                int BodyNumber = Convert.ToInt32(idBody);
-                if (Data.BodyList[BodyNumber] != null)
+                int BodyNumber;
+                bool notstrB = Int32.TryParse(idBody, out BodyNumber);
+                if (notstrB && BodyNumber >= 0 && BodyNumber < Data.BodyList.Length)
                 {
                     Data.RocketList[RocketIndex].Body = Data.BodyList[BodyNumber];
                     flag = false;
@@ -88,8 +90,9 @@ namespace RocketProgramm
             {
                 Console.Write("Engine number: ");
                 string idEngine = Console.ReadLine();
-                int EngineNumber = Convert.ToInt32(idEngine);
-                if (Data.EngineList[EngineNumber] != null)
+                int EngineNumber;
+                bool notstrE = Int32.TryParse(idEngine, out EngineNumber);
+                if (notstrE && EngineNumber >= 0 && EngineNumber < Data.EngineList.Length)
                 {
                     Data.RocketList[RocketIndex].Engine = Data.EngineList[EngineNumber];
                     flag = false;

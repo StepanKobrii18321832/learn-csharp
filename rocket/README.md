@@ -25,3 +25,7 @@ v1.2
 v1.2.1
 
 - bug fix
+
+v1.2.2
+
+- bug fix

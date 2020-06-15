@@ -55,24 +55,24 @@ namespace RocketProgramm
                 if (firstMessage && currentDistance > 10000)
                 {
                     await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nsuccessful takeoff\ndistance: " + 
-                    currentDistance + "\nfuel: " + (100 * Fuel / Body.FuelVolume) + "%"));
+                    currentDistance + "\nfuel: " + Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
                     firstMessage = false;
                 }
                 if (secondMessage && currentDistance > 50000)
                 {
                     await Task.Run(()=>Header.Message("message from the rocket " + Name + "\ndumping empty fuel tanks\ndistance: " +
-                    currentDistance + "\nfuel: " + (100 * Fuel / Body.FuelVolume) + "%"));
+                    currentDistance + "\nfuel: " + Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
                     secondMessage = false;
                 }
                 if (finishMessage && currentDistance > 95000)
                 {
                     await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nentry into orbit\ndistance: " + 
-                    currentDistance + "\nfuel: " + (100 * Fuel / Body.FuelVolume) + "%"));
+                    currentDistance + "\nfuel: " + Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
                     finishMessage = false;
                 }
             }
             await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nconfirm the entry into orbit\nfuel: " +
-            (100 * Fuel / Body.FuelVolume) + "%"));
+            Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
             Engine.End();
         }
 
