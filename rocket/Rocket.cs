@@ -36,7 +36,7 @@ namespace RocketProgramm
         public string Name { get; set; }
         public double Fuel;
 
-        public bool FuelCostul;
+        public bool FuelCostul; // этот костыль нужно поправить // чтобы поправить посмотри на поле Weight
 
         public bool InOrbit { get; private set; }
         public Rocket() 
@@ -55,7 +55,7 @@ namespace RocketProgramm
             Engine.Start();
             bool firstMessage = true;
             bool secondMessage = true;
-            bool finishMessage = true;
+            bool finishMessage = true; // ору с этого костыля // хотя я хз как правильно написать
             for (double currentDistance = 0; currentDistance < 100000; currentDistance += MaxSpeed)
             {
                 Thread.Sleep(1000);
@@ -81,7 +81,7 @@ namespace RocketProgramm
             }
             await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nconfirm the entry into orbit\nfuel: " +
             Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
-            Engine.End();
+            Engine.End(); // нужно написать функцию конструктора сообщений во время полета
             InOrbit = true;
             bool flag = true;
             int RocketIndex = 0;
@@ -98,12 +98,12 @@ namespace RocketProgramm
                 Array.Resize(ref Data.RocketListInOrbit, Data.RocketListInOrbit.Length + 1);
                 RocketIndex = Data.RocketListInOrbit.Length - 1;
             }
-            Data.RocketListInOrbit[RocketIndex] = this;
+            Data.RocketListInOrbit[RocketIndex] = this; // эту штуку возможно нужно поместить в функцию
         }
 
-        public async void Launch()
+        public async void Launch() // приятного полета по моему коду
         {
-            if (FuelCostul)
+            if (FuelCostul) // чтобы я этого не видел
             {
                 Fuel = Body.FuelVolume;
                 FuelCostul = false;
@@ -182,11 +182,11 @@ namespace RocketProgramm
                 RocketIndex = Data.RocketList.Length - 1;
             }
             Data.RocketList[RocketIndex] = this;
-        }
+        } // тоже самое что в IntoOrbit()
 
         public async void Landing()
         {
-            if (InOrbit && Fuel >= 5000)
+            if (InOrbit && Fuel >= 5000) // откуда это значение // нужно исправить
             {
                 Data.DeleteRocketInOrbit(this);
                 await Task.Run(()=>OnEarth()); 
