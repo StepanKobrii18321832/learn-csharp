@@ -2,34 +2,36 @@ using System;
 
 namespace RocketProgramm
 {
-    public class LaunchCommand : Command
+    public class LandingCommand : Command
     {
         public override string Name 
         {
             get
             {
-                return "rocket launch";
+                return "rocket landing";
             }
         }
 
         public override void Execute()
         {
             Console.WriteLine("Rocket list");
-            for (int i = 0; i < Data.RocketList.Length; i++)
+            for (int i = 0; i < Data.RocketListInOrbit.Length; i++)
             {
-                if (Data.RocketList[i] != null) Console.WriteLine(i + " " + Data.RocketList[i].Name);
+                if (Data.RocketListInOrbit[i] != null) Console.WriteLine(i + " " + Data.RocketListInOrbit[i].Name);
                 else Console.WriteLine(i);
             }
 
-            if (Data.RocketList.Length == 0) Console.WriteLine("null");
+            if (Data.RocketListInOrbit.Length == 0) Console.WriteLine("null");
+            
 
             string idstr = Console.ReadLine();
             int RocketNumber;
             bool notstr = Int32.TryParse(idstr, out RocketNumber);
+
             if (notstr && RocketNumber >= 0 && 
-            RocketNumber < Data.RocketList.Length && 
-            Data.RocketList[RocketNumber] != null) 
-            Data.RocketList[RocketNumber].Launch();
+            RocketNumber < Data.RocketListInOrbit.Length && 
+            Data.RocketListInOrbit[RocketNumber] != null) 
+            Data.RocketListInOrbit[RocketNumber].Landing();
             else Console.WriteLine("its not rocket");
         }
     }

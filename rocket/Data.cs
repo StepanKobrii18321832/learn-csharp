@@ -3,16 +3,16 @@ namespace RocketProgramm
     static class Data
     {
         public static Command[] CommandList = {
-            new FirstCommand(),
             new qCommand(),
             new NewRocketCommand(),
             new RocketListCommand(),
             new LaunchCommand(),
-            new RocketInfoCommand()
+            new RocketInfoCommand(),
+            new RocketListInOrbitCommand(),
+            new LandingCommand()
         };
 
         public static Rocket[] RocketList = {
-            new Rocket("A100, Kyev, HF450"),
             new Rocket("A150, Kyev-2, HF600")
         };
 
@@ -44,6 +44,15 @@ namespace RocketProgramm
             for (int i = 0; i < RocketList.Length; i++)
             {
                 if (RocketList[i].Name == rocket.Name) RocketList[i] = null;
+            }
+            
+        }
+
+        public static void DeleteRocketInOrbit(Rocket rocket)
+        {
+            for (int i = 0; i < RocketListInOrbit.Length; i++)
+            {
+                if (RocketListInOrbit[i].Name == rocket.Name) RocketListInOrbit[i] = null;
             }
             
         }

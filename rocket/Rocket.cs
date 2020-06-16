@@ -35,9 +35,17 @@ namespace RocketProgramm
 
         public string Name { get; set; }
         public double Fuel;
-        public Rocket() {}
 
-        public Rocket (string name)
+        public bool FuelCostul;
+
+        public bool InOrbit { get; private set; }
+        public Rocket() 
+        {
+            InOrbit = false;
+            FuelCostul = true;
+        }
+
+        public Rocket (string name) : this()
         {
             Name = name;
         }
@@ -74,13 +82,34 @@ namespace RocketProgramm
             await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nconfirm the entry into orbit\nfuel: " +
             Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
             Engine.End();
+            InOrbit = true;
+            bool flag = true;
+            int RocketIndex = 0;
+            for (int i = 0; i < Data.RocketListInOrbit.Length; i++)
+            {
+                if (Data.RocketListInOrbit[i] == null && flag) 
+                {
+                    RocketIndex = i;
+                    flag = false;
+                } 
+            }
+            if (flag)
+            {
+                Array.Resize(ref Data.RocketListInOrbit, Data.RocketListInOrbit.Length + 1);
+                RocketIndex = Data.RocketListInOrbit.Length - 1;
+            }
+            Data.RocketListInOrbit[RocketIndex] = this;
         }
 
         public async void Launch()
         {
-            Fuel = Body.FuelVolume;
+            if (FuelCostul)
+            {
+                Fuel = Body.FuelVolume;
+                FuelCostul = false;
+            }
 
-            if (MaxSpeed > 100 && Distance > 100000)
+            if (!InOrbit && MaxSpeed > 100 && Distance > 100000)
             {
                 Data.DeleteRocket(this);
                 await Task.Run(()=>IntoOrbit()); 
@@ -94,6 +123,78 @@ namespace RocketProgramm
                 Console.WriteLine("won't take off");
             }
 
+        }
+
+        public async void OnEarth()
+        {
+            Engine.Start();
+            bool firstMessage = true;
+            bool secondMessage = true;
+            bool parachuteMessage = true;
+            bool finishMessage = true;
+            Fuel -= 1000;
+            for (double currentDistance = 100000; currentDistance > 0; currentDistance -= MaxSpeed * 2)
+            {
+                Fuel -= 10;
+                Thread.Sleep(1000);
+                if (firstMessage && currentDistance < 99000)
+                {
+                    await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nrocket begins maneuver of entry into the atmosphere\ndistance: " + 
+                    currentDistance + "\nfuel: " + Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
+                    firstMessage = false;
+                }
+                if (secondMessage && currentDistance < 80000)
+                {
+                    await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nentrance to the atmosphere\ndistance: " +
+                    currentDistance + "\nfuel: " + Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
+                    secondMessage = false;
+                }
+                if (parachuteMessage && currentDistance < 30000)
+                {
+                    await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nsecondary parachute activation\ndistance: " + 
+                    currentDistance + "\nfuel: " + Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
+                    parachuteMessage = false;
+                }
+                if (finishMessage && currentDistance < 10000)
+                {
+                    await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nactivation of the main parachute\ndistance: " + 
+                    currentDistance + "\nfuel: " + Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
+                    finishMessage = false;
+                }
+            }
+            await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nlanding was successful\nfuel: " +
+            Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
+            Engine.End();
+            InOrbit = false;
+            bool flag = true;
+            int RocketIndex = 0;
+            for (int i = 0; i < Data.RocketList.Length; i++)
+            {
+                if (Data.RocketList[i] == null && flag) 
+                {
+                    RocketIndex = i;
+                    flag = false;
+                } 
+            }
+            if (flag)
+            {
+                Array.Resize(ref Data.RocketList, Data.RocketList.Length + 1);
+                RocketIndex = Data.RocketList.Length - 1;
+            }
+            Data.RocketList[RocketIndex] = this;
+        }
+
+        public async void Landing()
+        {
+            if (InOrbit && Fuel >= 5000)
+            {
+                Data.DeleteRocketInOrbit(this);
+                await Task.Run(()=>OnEarth()); 
+            }
+            else
+            {
+                Console.WriteLine("not enough fuel");
+            }
         }
 
     }
