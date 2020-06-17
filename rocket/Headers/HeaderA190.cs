@@ -7,12 +7,14 @@ namespace RocketProgramm
         public int Human { get; private set; }
         public int Weight { get; private set; }
         public string Name { get; private set; }
+        public string Type { get; private set; }
 
         public HeaderA190()
         {
             Human = 2;
             Weight = 2000;
             Name = "A190";
+            Type = "passenger";
         }
 
         public void Message(string text)
