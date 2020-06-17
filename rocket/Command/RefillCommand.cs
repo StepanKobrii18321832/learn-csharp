@@ -29,7 +29,7 @@ namespace RocketProgramm
             if (notstr && RocketNumber >= 0 && 
             RocketNumber < Data.RocketList.Length && 
             Data.RocketList[RocketNumber] != null)
-            await Task.Run(()=>Data.RocketList[RocketNumber].Refill());
+            await Task.Run(()=>Data.RocketList[RocketNumber].Refill(null));
             else
             {
                 Console.WriteLine("its not rocket");

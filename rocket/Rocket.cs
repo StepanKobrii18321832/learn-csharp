@@ -109,6 +109,10 @@ namespace RocketProgramm
             {
                 Fuel = Body.FuelVolume;
                 FuelCostul = false;
+                if (Header.Type == "cargo")
+                {
+                    Fuel += (Header.Weight - 1000) * 10;
+                }
             }
 
             if (!InOrbit && MaxSpeed > 100 && Distance > 100000 && Fuel == Body.FuelVolume)
@@ -194,15 +198,24 @@ namespace RocketProgramm
             }
         }
 
-        public void Refill()
+        public void Refill(Rocket rocket) // эта ракета должна быть на орбите
         {
             if (!InOrbit)
             {
                 Thread.Sleep(30000);
-                Fuel = Body.FuelVolume;
+                FuelCostul = true;
                 Console.WriteLine("Rocket " + Name + " refill done");
             }
+            else
+            {
+                
+            }
         }
+
+        // public void GetFuel(Rocket rocket)
+        // {
+        //     // get fuel from fuel {rocket} // переехала в другую функцию
+        // }
 
     }
 }
