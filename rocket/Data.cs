@@ -9,7 +9,8 @@ namespace RocketProgramm
             new LaunchCommand(),
             new RocketInfoCommand(),
             new RocketListInOrbitCommand(),
-            new LandingCommand()
+            new LandingCommand(),
+            new RefillCommand()
         };
 
         public static Rocket[] RocketList = {

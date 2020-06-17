@@ -111,12 +111,12 @@ namespace RocketProgramm
                 FuelCostul = false;
             }
 
-            if (!InOrbit && MaxSpeed > 100 && Distance > 100000)
+            if (!InOrbit && MaxSpeed > 100 && Distance > 100000 && Fuel == Body.FuelVolume)
             {
                 Data.DeleteRocket(this);
                 await Task.Run(()=>IntoOrbit()); 
             }
-            else if (MaxSpeed > 100)
+            else if (MaxSpeed > 100 && Fuel == Body.FuelVolume)
             {
                 Console.WriteLine("won't go into orbit");
             }
@@ -191,6 +191,16 @@ namespace RocketProgramm
             else
             {
                 Console.WriteLine("not enough fuel");
+            }
+        }
+
+        public void Refill()
+        {
+            if (!InOrbit)
+            {
+                Thread.Sleep(30000);
+                Fuel = Body.FuelVolume;
+                Console.WriteLine("Rocket " + Name + " refill done");
             }
         }
 
