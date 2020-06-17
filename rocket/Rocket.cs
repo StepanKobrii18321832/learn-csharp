@@ -117,7 +117,7 @@ namespace RocketProgramm
 
             if (!InOrbit && MaxSpeed > 100 && Distance > 100000 && Fuel >= Body.FuelVolume)
             {
-                Data.DeleteRocket(this);
+                Data.DeleteRocket(this); // bug
                 await Task.Run(()=>IntoOrbit()); 
             }
             else if (MaxSpeed > 100 && Fuel >= Body.FuelVolume)

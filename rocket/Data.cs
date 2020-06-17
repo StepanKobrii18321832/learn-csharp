@@ -47,7 +47,7 @@ namespace RocketProgramm
         {
             for (int i = 0; i < RocketList.Length; i++)
             {
-                if (RocketList[i].Name == rocket.Name) RocketList[i] = null;
+                if (RocketList[i] == rocket) RocketList[i] = null;
             }
             
         }
