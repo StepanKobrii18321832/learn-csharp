@@ -216,16 +216,11 @@ namespace RocketProgramm
 
 
                 Console.WriteLine("rocket can receive " + setFuel + 
-                " fuel and fill its tanks " + precentTank + 
-                "%. How much percent to refuel?");
-                string str = Console.ReadLine();
-                int precent;
-                bool notstr = Int32.TryParse(str, out precent);
-                double finalFuel = precent * setFuel / 100;
+                " fuel and fill its tanks " + precentTank + "%");
 
                 Thread.Sleep(1000);
-                rocket.Fuel -= finalFuel;
-                Fuel += finalFuel;
+                rocket.Fuel -= setFuel;
+                Fuel += setFuel;
                 Console.WriteLine("Rocket " + Name + " refill done");
             }
         }
