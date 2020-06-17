@@ -36,7 +36,7 @@ namespace RocketProgramm
         public string Name { get; set; }
         public double Fuel;
 
-        public bool FuelCostul; // этот костыль нужно поправить // чтобы поправить посмотри на поле Weight
+        public bool FuelCostul; // этот костыль нужно поправить // я еще не придумал
 
         public bool InOrbit { get; private set; }
         public Rocket() 
@@ -48,6 +48,12 @@ namespace RocketProgramm
         public Rocket (string name) : this()
         {
             Name = name;
+        }
+
+        public void SendingSignal(string text, double currentDistance)
+        {
+            Header.Message("message from the rocket " + Name + "\n" + text + "\ndistance: " + 
+            currentDistance + "\nfuel: " + Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
         }
 
         private async void IntoOrbit()
@@ -62,26 +68,22 @@ namespace RocketProgramm
                 Fuel -= Engine.FuelConsumption;
                 if (firstMessage && currentDistance > 10000)
                 {
-                    await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nsuccessful takeoff\ndistance: " + 
-                    currentDistance + "\nfuel: " + Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
+                    await Task.Run(()=>SendingSignal("successful takeoff", currentDistance);
                     firstMessage = false;
                 }
                 if (secondMessage && currentDistance > 50000)
                 {
-                    await Task.Run(()=>Header.Message("message from the rocket " + Name + "\ndumping empty fuel tanks\ndistance: " +
-                    currentDistance + "\nfuel: " + Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
+                    await Task.Run(()=>SendingSignal("dumping empty fuel tanks", currentDistance);
                     secondMessage = false;
                 }
                 if (finishMessage && currentDistance > 95000)
                 {
-                    await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nentry into orbit\ndistance: " + 
-                    currentDistance + "\nfuel: " + Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
+                    await Task.Run(()=>SendingSignal("entry into orbit", currentDistance);
                     finishMessage = false;
                 }
             }
-            await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nconfirm the entry into orbit\nfuel: " +
-            Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
-            Engine.End(); // нужно написать функцию конструктора сообщений во время полета
+            await Task.Run(()=>SendingSignal("confirm the entry into orbit", currentDistance);
+            Engine.End(); // нужно написать функцию конструктора сообщений во время полета // done
             InOrbit = true;
             bool flag = true;
             int RocketIndex = 0;
@@ -98,12 +100,12 @@ namespace RocketProgramm
                 Array.Resize(ref Data.RocketListInOrbit, Data.RocketListInOrbit.Length + 1);
                 RocketIndex = Data.RocketListInOrbit.Length - 1;
             }
-            Data.RocketListInOrbit[RocketIndex] = this; // эту штуку возможно нужно поместить в функцию
+            Data.RocketListInOrbit[RocketIndex] = this; // эту штуку возможно нужно поместить в функцию // и что для взлета и посадки +2 функции?
         }
 
         public async void Launch() // приятного полета по моему коду
         {
-            if (FuelCostul) // чтобы я этого не видел
+            if (FuelCostul) // чтобы я этого не видел // и что с этим делать теперь?
             {
                 Fuel = Body.FuelVolume;
                 FuelCostul = false;
@@ -139,31 +141,27 @@ namespace RocketProgramm
                 Thread.Sleep(1000);
                 if (firstMessage && currentDistance < 99000)
                 {
-                    await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nrocket begins maneuver of entry into the atmosphere\ndistance: " + 
+                    await Task.Run(()=>SendingSignal("rocket begins maneuver of entry into the atmosphere", currentDistance);Header.Message("message from the rocket " + Name + "\n\ndistance: " + 
                     currentDistance + "\nfuel: " + Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
                     firstMessage = false;
                 }
                 if (secondMessage && currentDistance < 80000)
                 {
-                    await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nentrance to the atmosphere\ndistance: " +
-                    currentDistance + "\nfuel: " + Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
+                    await Task.Run(()=>SendingSignal("entrance to the atmosphere", currentDistance);
                     secondMessage = false;
                 }
                 if (parachuteMessage && currentDistance < 30000)
                 {
-                    await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nsecondary parachute activation\ndistance: " + 
-                    currentDistance + "\nfuel: " + Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
+                    await Task.Run(()=>SendingSignal("secondary parachute activation", currentDistance);
                     parachuteMessage = false;
                 }
                 if (finishMessage && currentDistance < 10000)
                 {
-                    await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nactivation of the main parachute\ndistance: " + 
-                    currentDistance + "\nfuel: " + Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
+                    await Task.Run(()=>SendingSignal("activation of the main parachute", currentDistance);
                     finishMessage = false;
                 }
             }
-            await Task.Run(()=>Header.Message("message from the rocket " + Name + "\nlanding was successful\nfuel: " +
-            Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%"));
+            await Task.Run(()=>SendingSignal("landing was successful", currentDistance);
             Engine.End();
             InOrbit = false;
             bool flag = true;
