@@ -48,7 +48,7 @@ namespace RocketProgramm
             Data.RocketListInOrbit[RocketNumberCargo] != null &&
             Data.RocketListInOrbit[RocketNumberCargo].Header.Type == "cargo") 
             {
-                
+                await Task.Run(()=>Data.RocketListInOrbit[RocketNumber].Refill(Data.RocketListInOrbit[RocketNumberCargo]));
             }
             else
             {

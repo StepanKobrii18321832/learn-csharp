@@ -12,7 +12,7 @@ namespace RocketProgramm
         public HeaderG1()
         {
             Human = 0;
-            Weight = 5000;
+            Weight = 4000;
             Name = "G1";
             Type = "cargo";
         }

@@ -11,7 +11,7 @@ namespace RocketProgramm
         public BodyF1()
         {
             Weight = 8000;
-            FuelVolume = 84100;
+            FuelVolume = 90100;
             Color = "red";
             Material = "steel";
             Manufacturer = "Russia";

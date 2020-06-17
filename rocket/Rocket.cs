@@ -62,7 +62,7 @@ namespace RocketProgramm
             bool firstMessage = true;
             bool secondMessage = true;
             bool finishMessage = true; // ору с этого костыля // хотя я хз как правильно написать
-            for (double currentDistance = 0; currentDistance < 100000; currentDistance += MaxSpeed)
+            for (double currentDistance = 0; currentDistance < 100000; currentDistance += MaxSpeed * 100)
             {
                 Thread.Sleep(1000);
                 Fuel -= Engine.FuelConsumption;
@@ -111,16 +111,16 @@ namespace RocketProgramm
                 FuelCostul = false;
                 if (Header.Type == "cargo")
                 {
-                    Fuel += (Header.Weight - 1000) * 10;
+                    Fuel += (Header.Weight - 1000) * 20;
                 }
             }
 
-            if (!InOrbit && MaxSpeed > 100 && Distance > 100000 && Fuel == Body.FuelVolume)
+            if (!InOrbit && MaxSpeed > 100 && Distance > 100000 && Fuel >= Body.FuelVolume)
             {
                 Data.DeleteRocket(this);
                 await Task.Run(()=>IntoOrbit()); 
             }
-            else if (MaxSpeed > 100 && Fuel == Body.FuelVolume)
+            else if (MaxSpeed > 100 && Fuel >= Body.FuelVolume)
             {
                 Console.WriteLine("won't go into orbit");
             }
@@ -139,7 +139,7 @@ namespace RocketProgramm
             bool parachuteMessage = true;
             bool finishMessage = true;
             Fuel -= 1000;
-            for (double currentDistance = 100000; currentDistance > 0; currentDistance -= MaxSpeed * 2)
+            for (double currentDistance = 100000; currentDistance > 0; currentDistance -= MaxSpeed * 200)
             {
                 Fuel -= 10;
                 Thread.Sleep(1000);
@@ -208,7 +208,25 @@ namespace RocketProgramm
             }
             else
             {
-                
+                double empty = (Header.Type == "passenger") ?
+                Body.FuelVolume - Fuel :
+                Body.FuelVolume + (Header.Weight - 1000) * 20 - Fuel;
+                double setFuel = (rocket.Fuel > empty) ? empty : rocket.Fuel;
+                double precentTank = 100 * (Fuel + setFuel) / Body.FuelVolume;
+
+
+                Console.WriteLine("rocket can receive " + setFuel + 
+                " fuel and fill its tanks " + precentTank + 
+                "%. How much percent to refuel?");
+                string str = Console.ReadLine();
+                int precent;
+                bool notstr = Int32.TryParse(str, out precent);
+                double finalFuel = precent * setFuel / 100;
+
+                Thread.Sleep(1000);
+                rocket.Fuel -= finalFuel;
+                Fuel += finalFuel;
+                Console.WriteLine("Rocket " + Name + " refill done");
             }
         }
 

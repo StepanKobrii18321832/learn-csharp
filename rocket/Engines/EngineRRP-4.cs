@@ -16,7 +16,7 @@ namespace RocketProgramm
         public EngineRRP4()
         {
             Weight = 900;
-            Power = 40600;
+            Power = 42600;
             FuelConsumption = 138;
             Color = "red";
             Material = "steel";

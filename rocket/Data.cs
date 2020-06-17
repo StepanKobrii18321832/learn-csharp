@@ -10,11 +10,13 @@ namespace RocketProgramm
             new RocketInfoCommand(),
             new RocketListInOrbitCommand(),
             new LandingCommand(),
-            new RefillCommand()
+            new RefillCommand(),
+            new GetFuelCommand()
         };
 
         public static Rocket[] RocketList = {
-            new Rocket("A150, Kyev-2, HF600")
+            new Rocket("Main"),
+            new Rocket("Second")
         };
 
         public static Rocket[] RocketListInOrbit = {
@@ -37,7 +39,8 @@ namespace RocketProgramm
         public static RocketHeader[] HeaderList = {
             new HeaderA100(),
             new HeaderA150(),
-            new HeaderA190()
+            new HeaderA190(),
+            new HeaderG1()
         };
 
         public static void DeleteRocket(Rocket rocket)
