@@ -14,6 +14,7 @@ help
 - rocket list in orbit - shows a list of rockets in orbit
 - rocket landing - rocket landing
 - rocket refill - refuel specified rocket
+- rocket get fuel - refueling in orbit. From secondary to main
 
 v1.1
 
@@ -46,3 +47,11 @@ v1.4
 - refill function **added**
 - **new** command "rocket refill"
 - bug **fix**
+
+v1.5
+
+- refill in orbit function **added**
+- **new** command "rocket get fuel"
+- 1 **new** module
+- number of launch rockets **changed**
+- rocket type parameter **added**

@@ -62,7 +62,7 @@ namespace RocketProgramm
             bool firstMessage = true;
             bool secondMessage = true;
             bool finishMessage = true; // ору с этого костыля // хотя я хз как правильно написать
-            for (double currentDistance = 0; currentDistance < 100000; currentDistance += MaxSpeed * 100)
+            for (double currentDistance = 0; currentDistance < 100000; currentDistance += MaxSpeed)
             {
                 Thread.Sleep(1000);
                 Fuel -= Engine.FuelConsumption;
@@ -83,24 +83,9 @@ namespace RocketProgramm
                 }
             }
             await Task.Run(()=>SendingSignal("confirm the entry into orbit", Distance));
-            Engine.End(); // нужно написать функцию конструктора сообщений во время полета // done
+            Engine.End(); 
             InOrbit = true;
-            bool flag = true;
-            int RocketIndex = 0;
-            for (int i = 0; i < Data.RocketListInOrbit.Length; i++)
-            {
-                if (Data.RocketListInOrbit[i] == null && flag) 
-                {
-                    RocketIndex = i;
-                    flag = false;
-                } 
-            }
-            if (flag)
-            {
-                Array.Resize(ref Data.RocketListInOrbit, Data.RocketListInOrbit.Length + 1);
-                RocketIndex = Data.RocketListInOrbit.Length - 1;
-            }
-            Data.RocketListInOrbit[RocketIndex] = this; // эту штуку возможно нужно поместить в функцию // и что для взлета и посадки +2 функции?
+            Data.AddRocketInOrbit(this);
         }
 
         public async void Launch() // приятного полета по моему коду
@@ -139,7 +124,7 @@ namespace RocketProgramm
             bool parachuteMessage = true;
             bool finishMessage = true;
             Fuel -= 1000;
-            for (double currentDistance = 100000; currentDistance > 0; currentDistance -= MaxSpeed * 200)
+            for (double currentDistance = 100000; currentDistance > 0; currentDistance -= MaxSpeed * 2)
             {
                 Fuel -= 10;
                 Thread.Sleep(1000);
@@ -167,23 +152,8 @@ namespace RocketProgramm
             await Task.Run(()=>SendingSignal("landing was successful", Distance));
             Engine.End();
             InOrbit = false;
-            bool flag = true;
-            int RocketIndex = 0;
-            for (int i = 0; i < Data.RocketList.Length; i++)
-            {
-                if (Data.RocketList[i] == null && flag) 
-                {
-                    RocketIndex = i;
-                    flag = false;
-                } 
-            }
-            if (flag)
-            {
-                Array.Resize(ref Data.RocketList, Data.RocketList.Length + 1);
-                RocketIndex = Data.RocketList.Length - 1;
-            }
-            Data.RocketList[RocketIndex] = this;
-        } // тоже самое что в IntoOrbit()
+            Data.AddRocket(this);
+        }
 
         public async void Landing()
         {
@@ -202,9 +172,11 @@ namespace RocketProgramm
         {
             if (!InOrbit)
             {
+                Data.DeleteRocket(this);
                 Thread.Sleep(30000);
                 FuelCostul = true;
                 Console.WriteLine("Rocket " + Name + " refill done");
+                Data.AddRocket(this);
             }
             else
             {
@@ -217,18 +189,16 @@ namespace RocketProgramm
 
                 Console.WriteLine("rocket can receive " + setFuel + 
                 " fuel and fill its tanks " + precentTank + "%");
+                Data.DeleteRocketInOrbit(rocket);
+                Data.DeleteRocketInOrbit(this);
 
-                Thread.Sleep(1000);
+                Thread.Sleep(30000);
                 rocket.Fuel -= setFuel;
                 Fuel += setFuel;
-                Console.WriteLine("Rocket " + Name + " refill done");
-            }
-        }
-
-        // public void GetFuel(Rocket rocket)
-        // {
-        //     // get fuel from fuel {rocket} // переехала в другую функцию
-        // }
-
-    }
+                Console.WriteLine("Rocket " + Name + " refill done"); 
+                Data.AddRocketInOrbit(rocket);
+                Data.AddRocketInOrbit(this);
+            }                                                        
+        }                                                           
+    }                                                              
 }
