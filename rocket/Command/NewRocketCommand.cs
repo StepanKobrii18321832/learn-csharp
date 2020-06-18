@@ -39,9 +39,9 @@ namespace RocketProgramm
                 Console.WriteLine(i + " " + Data.HeaderList[i].Name);
             }
             flag = true;
-            while (flag)
+            while (flag) // ВНИМАНИЕ слабонервным не смотреть
             {
-                Console.Write("Header number: ");
+                Console.Write("Header number: "); // здесь костыль)))0)
                 string idHeader = Console.ReadLine();
                 int HeaderNumber;
                 bool notstrH = Int32.TryParse(idHeader, out HeaderNumber);
@@ -49,10 +49,10 @@ namespace RocketProgramm
                 {
                     switch (HeaderNumber)
                     {
-                        case 0:
-                            Data.RocketList[RocketIndex].Header = new HeaderA100();
+                        case 0: // я хз как создать новый экземпляр типом как экземпляр класса который в массиве 
+                            Data.RocketList[RocketIndex].Header = new HeaderA100(); 
                             break;
-                        case 1:
+                        case 1: // это только для хедера
                             Data.RocketList[RocketIndex].Header = new HeaderA150();
                             break;
                         case 2:

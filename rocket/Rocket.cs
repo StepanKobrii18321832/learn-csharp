@@ -56,6 +56,24 @@ namespace RocketProgramm
             currentDistance + "\nfuel: " + Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%");
         }
 
+        public async void ChangeOrbit(int orbitNumber)
+        {
+            if (Fuel >= 600)
+            {
+                await Task.Run(()=>SendingSignal("the beginning of the orbit change maneuver", 100000));
+                Fuel -= 600;
+                Data.DeleteRocketInOrbit(this);
+                Thread.Sleep(20000);
+                Header.Space.OrbitRadius = orbitNumber;
+                Data.AddRocketInOrbit(this);
+                await Task.Run(()=>SendingSignal("orbit change was successful", 100000));
+            }
+            else
+            {
+                Console.WriteLine("not enough fuel");
+            }
+        }
+
         private async void IntoOrbit()
         {
             Engine.Start();
@@ -132,7 +150,7 @@ namespace RocketProgramm
             bool parachuteMessage = true;
             bool finishMessage = true;
             Fuel -= 1000;
-            for (double currentDistance = 100000; currentDistance > 0; currentDistance -= MaxSpeed * 2)
+            for (double currentDistance = 100000; currentDistance > 0; currentDistance -= MaxSpeed)
             {
                 Fuel -= 10;
                 Thread.Sleep(1000);
@@ -180,7 +198,7 @@ namespace RocketProgramm
 
         public void Refill(Rocket rocket) // эта ракета должна быть на орбите
         {
-            if (/*!InOrbit*/Header.Space.OrbitRadius == 0)
+            if (Header.Space.OrbitRadius == 0)
             {
                 Data.DeleteRocket(this);
                 Thread.Sleep(30000);
@@ -190,6 +208,8 @@ namespace RocketProgramm
             }
             else
             {
+                if (rocket.Header.Space.OrbitRadius == Header.Space.OrbitRadius)
+                {
                 double empty = (Header.Type == "passenger") ?
                 Body.FuelVolume - Fuel :
                 Body.FuelVolume + (Header.Weight - 1000) * 20 - Fuel;
@@ -208,6 +228,11 @@ namespace RocketProgramm
                 Console.WriteLine("Rocket " + Name + " refill done"); 
                 Data.AddRocketInOrbit(rocket);
                 Data.AddRocketInOrbit(this);
+                }
+                else
+                {
+                    Console.WriteLine("impossible to get rocket fuel from another orbit");
+                }
             }                                                        
         }                                                           
     }                                                              
