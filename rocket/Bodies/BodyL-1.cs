@@ -1,6 +1,6 @@
 namespace RocketProgramm
 {
-    class BodyKyev2 : RocketBody
+    class BodyL1 : RocketBody
     {
         public int Weight { get; private set; }
         public int FuelVolume { get; private set; }
@@ -8,14 +8,14 @@ namespace RocketProgramm
         public string Material { get; private set; }
         public string Manufacturer { get; private set; }
         public string Name { get; private set; }
-        public BodyKyev2()
+        public BodyL1()
         {
-            Weight = 2700;
-            FuelVolume = 47200;
+            Weight = 2500;
+            FuelVolume = 48300;
             Color = "red";
             Material = "steel";
             Manufacturer = "Russia";
-            Name = "Kyev-2";
+            Name = "L-1";
         }
     }
 }

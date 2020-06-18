@@ -29,21 +29,27 @@ namespace RocketProgramm
         public static RocketBody[] BodyList = {
             new BodyKyev(),
             new BodyKyev2(),
-            new BodyF1()
+            new BodyF1(),
+            new BodyF1A(),
+            new BodyL1()
         };
 
         public static RocketEngine[] EngineList = {
             new EngineHF450(),
             new EngineHF600(),
+            new EngineHF800(),
             new EnginePRP4(),
-            new EngineRRP4()
+            new EnginePRP5(),
+            new EngineRRP4(),
+            new EngineRRP5()
         };
 
         public static RocketHeader[] HeaderList = {
             new HeaderA100(),
             new HeaderA150(),
             new HeaderA190(),
-            new HeaderG1()
+            new HeaderG1(),
+            new HeaderG2()
         };
 
         public static void DeleteRocket(Rocket rocket)

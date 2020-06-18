@@ -61,6 +61,9 @@ namespace RocketProgramm
                         case 3:
                             Data.RocketList[RocketIndex].Header = new HeaderG1();
                             break;
+                        case 4:
+                            Data.RocketList[RocketIndex].Header = new HeaderG2();
+                            break;
                     }
                     //Data.RocketList[RocketIndex].Header = Data.HeaderList[HeaderNumber]; // нужно новый а не копия
                     Data.RocketList[RocketIndex].Header.Space = new Coordinates(); // хз, если не свитч то не роботает
