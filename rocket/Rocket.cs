@@ -38,10 +38,10 @@ namespace RocketProgramm
 
         public bool FuelCostul; // этот костыль нужно поправить // я еще не придумал
 
-        public bool InOrbit { get; private set; }
+        //public bool InOrbit { get; private set; }
         public Rocket() 
         {
-            InOrbit = false;
+            //InOrbit = false;
             FuelCostul = true;
         }
 
@@ -84,7 +84,8 @@ namespace RocketProgramm
             }
             await Task.Run(()=>SendingSignal("confirm the entry into orbit", Distance));
             Engine.End(); 
-            InOrbit = true;
+            //InOrbit = true;
+            Header.Space.OrbitRadius = 1;
             Data.AddRocketInOrbit(this);
         }
 
@@ -100,7 +101,8 @@ namespace RocketProgramm
                 }
             }
 
-            if (!InOrbit && MaxSpeed > 100 && Distance > 100000 && Fuel >= Body.FuelVolume)
+            if (Header.Space.OrbitRadius == 0 && 
+            MaxSpeed > 100 && Distance > 100000 && Fuel >= Body.FuelVolume)
             {
                 Data.DeleteRocket(this); // bug
                 await Task.Run(()=>IntoOrbit()); 
@@ -108,10 +110,16 @@ namespace RocketProgramm
             else if (MaxSpeed > 100 && Fuel >= Body.FuelVolume)
             {
                 Console.WriteLine("won't go into orbit");
+                Console.WriteLine(MaxSpeed);
+                Console.WriteLine(Header.Space.OrbitRadius);
+                Console.WriteLine(Fuel + "/" + Body.FuelVolume);
             }
             else
             {
                 Console.WriteLine("won't take off");
+                Console.WriteLine(MaxSpeed);
+                Console.WriteLine(Header.Space.OrbitRadius);
+                Console.WriteLine(Fuel + "/" + Body.FuelVolume);
             }
 
         }
@@ -151,13 +159,15 @@ namespace RocketProgramm
             }
             await Task.Run(()=>SendingSignal("landing was successful", Distance));
             Engine.End();
-            InOrbit = false;
+            //InOrbit = false;
+            Header.Space.OrbitRadius = 0;
             Data.AddRocket(this);
         }
 
         public async void Landing()
         {
-            if (InOrbit && Fuel >= 5000) // откуда это значение // нужно исправить
+            if (/*InOrbit*/Header.Space.OrbitRadius > 0 && 
+            Fuel >= 5000) // откуда это значение // нужно исправить
             {
                 Data.DeleteRocketInOrbit(this);
                 await Task.Run(()=>OnEarth()); 
@@ -170,7 +180,7 @@ namespace RocketProgramm
 
         public void Refill(Rocket rocket) // эта ракета должна быть на орбите
         {
-            if (!InOrbit)
+            if (/*!InOrbit*/Header.Space.OrbitRadius == 0)
             {
                 Data.DeleteRocket(this);
                 Thread.Sleep(30000);

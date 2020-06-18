@@ -18,7 +18,9 @@ namespace RocketProgramm
             for (int i = 0; i < Data.RocketListInOrbit.Length; i++)
             {
                 if (Data.RocketListInOrbit[i] != null) Console.WriteLine(i + " " + 
-                Data.RocketListInOrbit[i].Name + " Type: " + Data.RocketListInOrbit[i].Header.Type);
+                Data.RocketListInOrbit[i].Name + 
+                ", Type: " + Data.RocketListInOrbit[i].Header.Type +
+                ", Orbit radius: " + Data.RocketListInOrbit[i].Header.Space.OrbitRadius);
                 else Console.WriteLine(i);
             }
         }

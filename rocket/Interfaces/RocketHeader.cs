@@ -8,5 +8,6 @@ namespace RocketProgramm
         string Type { get; }
         void Message(string text);
         string Name { get; }
+        Coordinates Space { get; set; }
     }
 }

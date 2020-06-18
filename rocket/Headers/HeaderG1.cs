@@ -8,6 +8,7 @@ namespace RocketProgramm
         public int Weight { get; private set; }
         public string Name { get; private set; }
         public string Type { get; private set; }
+        public Coordinates Space { get; set; }
 
         public HeaderG1()
         {

@@ -1,6 +1,6 @@
 **ROCKET**
 
-```C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe /nologo Main.cs Rocket.cs Interfaces\RocketBody.cs Interfaces\RocketEngine.cs Interfaces\RocketHeader.cs Engines\EngineHF450.cs Headers\HeaderA100.cs Bodies\BodyKyev.cs Engines\EngineHF600.cs Headers\HeaderA150.cs Bodies\BodyKyev-2.cs Interfaces\Command.cs Command\qCommand.cs RocketConsole.cs Command\NewRocketCommand.cs Data.cs Command\RocketListCommand.cs Command\LaunchCommand.cs Command\RocketInfoCommand.cs Bodies\BodyF-1.cs Engines\EnginePRP-4.cs Engines\EngineRRP-4.cs Headers\HeaderA190.cs Command\RocketListInOrbitCommand.cs Command\LandingCommand.cs Command\RefillCommand.cs Headers\HeaderG1.cs Command\GetFuelCommand.cs```
+```C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe /nologo Main.cs Rocket.cs Interfaces\RocketBody.cs Interfaces\RocketEngine.cs Interfaces\RocketHeader.cs Engines\EngineHF450.cs Headers\HeaderA100.cs Bodies\BodyKyev.cs Engines\EngineHF600.cs Headers\HeaderA150.cs Bodies\BodyKyev-2.cs Interfaces\Command.cs Command\qCommand.cs RocketConsole.cs Command\NewRocketCommand.cs Data.cs Command\RocketListCommand.cs Command\LaunchCommand.cs Command\RocketInfoCommand.cs Bodies\BodyF-1.cs Engines\EnginePRP-4.cs Engines\EngineRRP-4.cs Headers\HeaderA190.cs Command\RocketListInOrbitCommand.cs Command\LandingCommand.cs Command\RefillCommand.cs Headers\HeaderG1.cs Command\GetFuelCommand.cs Interfaces\Сoordinates.cs Interfaces\Planet.cs```
 
 ```Main.exe```
 
@@ -55,3 +55,8 @@ v1.5
 - 1 **new** module
 - number of launch rockets **changed**
 - rocket type parameter **added**
+
+v1.5.1
+
+- **added** info rocket "orbit radius"
+- bug **fix**

@@ -47,7 +47,23 @@ namespace RocketProgramm
                 bool notstrH = Int32.TryParse(idHeader, out HeaderNumber);
                 if (notstrH && HeaderNumber >= 0 && HeaderNumber < Data.HeaderList.Length) 
                 {
-                    Data.RocketList[RocketIndex].Header = Data.HeaderList[HeaderNumber];
+                    switch (HeaderNumber)
+                    {
+                        case 0:
+                            Data.RocketList[RocketIndex].Header = new HeaderA100();
+                            break;
+                        case 1:
+                            Data.RocketList[RocketIndex].Header = new HeaderA150();
+                            break;
+                        case 2:
+                            Data.RocketList[RocketIndex].Header = new HeaderA190();
+                            break;
+                        case 3:
+                            Data.RocketList[RocketIndex].Header = new HeaderG1();
+                            break;
+                    }
+                    //Data.RocketList[RocketIndex].Header = Data.HeaderList[HeaderNumber]; // нужно новый а не копия
+                    Data.RocketList[RocketIndex].Header.Space = new Coordinates(); // хз, если не свитч то не роботает
                     flag = false;
                 }
                 else 
