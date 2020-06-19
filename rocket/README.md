@@ -71,5 +71,5 @@ v1.6
 v1.6.1
 
 - 1 **new** header module
-- 3 **new** Engine module
-- 2 **new** Body module
+- 3 **new** engine module
+- 2 **new** body module
