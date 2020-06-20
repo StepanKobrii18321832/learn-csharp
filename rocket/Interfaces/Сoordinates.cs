@@ -9,5 +9,11 @@ namespace RocketProgramm
             OrbitRadius = 0;
             Object = Planet.Earth;
         }
+
+        public Coordinates(Planet planet, int orbitRadius)
+        {
+            Object = planet;
+            OrbitRadius = orbitRadius;
+        }
     }    
 }

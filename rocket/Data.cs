@@ -17,6 +17,10 @@ namespace RocketProgramm
             new ChangeOrbitCommand()
         };
 
+        public static Location EarthLocation = new Location(Planet.Earth, 3);
+        public static Location MoonLocation = new Location(Planet.Moon, 1);
+        public static Location MarsLocation = new Location(Planet.Mars, 2);
+
         public static Rocket[] RocketList = {
             new Rocket("Main"),
             new Rocket("Second")
