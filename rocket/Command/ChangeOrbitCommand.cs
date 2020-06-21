@@ -36,12 +36,12 @@ namespace RocketProgramm
             CurrentLocation.RocketListInOrbit[RocketNumber] != null) 
             {
                 Console.WriteLine("from " + CurrentLocation.RocketListInOrbit[RocketNumber].Header.Space.OrbitRadius +
-                " orbit to(1 - 3)");
+                " orbit to(1 - " + CurrentLocation.NameLocation.OrbitRadius + ")");
                 string orbitstr = Console.ReadLine();
                 int orbitNumber;
                 bool notstr2 = Int32.TryParse(orbitstr, out orbitNumber);
                 if (notstr2 && orbitNumber >= 1 &&
-                orbitNumber <= 3 && 
+                orbitNumber <= CurrentLocation.NameLocation.OrbitRadius && 
                 orbitNumber != CurrentLocation.RocketListInOrbit[RocketNumber].Header.Space.OrbitRadius)
                 {
                     await Task.Run(()=>CurrentLocation.RocketListInOrbit[RocketNumber].ChangeOrbit(orbitNumber)); // main

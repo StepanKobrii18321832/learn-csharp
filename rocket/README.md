@@ -73,3 +73,8 @@ v1.6.1
 - 1 **new** header module
 - 3 **new** engine module
 - 2 **new** body module
+
+v1.6.1.1 - v1.6.1.8
+
+- bug **fix**
+- **new** architecture with support for changing locations **(in future updates)**

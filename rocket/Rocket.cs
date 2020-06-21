@@ -154,7 +154,7 @@ namespace RocketProgramm
             bool parachuteMessage = true;
             bool finishMessage = true;
             Fuel -= 1000;
-            for (double currentDistance = 100000; currentDistance > 0; currentDistance -= MaxSpeed)
+            for (double currentDistance = 100000; currentDistance > 0; currentDistance -= MaxSpeed * 2)
             {
                 Fuel -= 10;
                 Thread.Sleep(1000);
