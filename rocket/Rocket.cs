@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace RocketProgramm
 {
-    class Rocket
+    public class Rocket
     {
         public RocketHeader Header { get; set; }
         public RocketEngine Engine { get; set; }

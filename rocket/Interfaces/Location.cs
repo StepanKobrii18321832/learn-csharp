@@ -1,6 +1,6 @@
 namespace RocketProgramm
 {
-    class Location
+    public class Location
     {
         public Coordinates NameLocation;
 

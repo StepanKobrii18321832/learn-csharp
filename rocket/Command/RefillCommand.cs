@@ -17,9 +17,9 @@ namespace RocketProgramm
         public override async void Execute(Location CurrentLocation)
         {
             Console.WriteLine("Rocket list");
-            for (int i = 0; i < Data.RocketList.Length; i++)
+            for (int i = 0; i < Data.CurrentLocation.RocketList.Length; i++)
             {
-                if (Data.RocketList[i] != null) Console.WriteLine(i + " " + Data.RocketList[i].Name);
+                if (Data.CurrentLocation.RocketList[i] != null) Console.WriteLine(i + " " + Data.CurrentLocation.RocketList[i].Name);
                 else Console.WriteLine(i);
             }
 
@@ -27,9 +27,9 @@ namespace RocketProgramm
             int RocketNumber;
             bool notstr = Int32.TryParse(idstr, out RocketNumber);
             if (notstr && RocketNumber >= 0 && 
-            RocketNumber < Data.RocketList.Length && 
-            Data.RocketList[RocketNumber] != null)
-            await Task.Run(()=>Data.RocketList[RocketNumber].Refill(null));
+            RocketNumber < Data.CurrentLocation.RocketList.Length && 
+            Data.CurrentLocation.RocketList[RocketNumber] != null)
+            await Task.Run(()=>Data.CurrentLocation.RocketList[RocketNumber].Refill(null));
             else
             {
                 Console.WriteLine("its not rocket");

@@ -17,14 +17,14 @@ namespace RocketProgramm
         public override async void Execute(Location CurrentLocation)
         {
             Console.WriteLine("Rocket list");
-            for (int i = 0; i < Data.RocketListInOrbit.Length; i++)
+            for (int i = 0; i < Data.CurrentLocation.RocketListInOrbit.Length; i++)
             {
-                if (Data.RocketListInOrbit[i] != null) Console.WriteLine(i + " " + Data.RocketListInOrbit[i].Name +
-                ", Orbit: " + Data.RocketListInOrbit[i].Header.Space.OrbitRadius);
+                if (Data.CurrentLocation.RocketListInOrbit[i] != null) Console.WriteLine(i + " " + Data.CurrentLocation.RocketListInOrbit[i].Name +
+                ", Orbit: " + Data.CurrentLocation.RocketListInOrbit[i].Header.Space.OrbitRadius);
                 else Console.WriteLine(i);
             }
 
-            if (Data.RocketListInOrbit.Length == 0) Console.WriteLine("null");
+            if (Data.CurrentLocation.RocketListInOrbit.Length == 0) Console.WriteLine("null");
             
 
             string idstr = Console.ReadLine();
@@ -32,19 +32,19 @@ namespace RocketProgramm
             bool notstr = Int32.TryParse(idstr, out RocketNumber);
 
             if (notstr && RocketNumber >= 0 && 
-            RocketNumber < Data.RocketListInOrbit.Length && 
-            Data.RocketListInOrbit[RocketNumber] != null) 
+            RocketNumber < Data.CurrentLocation.RocketListInOrbit.Length && 
+            Data.CurrentLocation.RocketListInOrbit[RocketNumber] != null) 
             {
-                Console.WriteLine("from " + Data.RocketListInOrbit[RocketNumber].Header.Space.OrbitRadius +
+                Console.WriteLine("from " + Data.CurrentLocation.RocketListInOrbit[RocketNumber].Header.Space.OrbitRadius +
                 " orbit to(1 - 3)");
                 string orbitstr = Console.ReadLine();
                 int orbitNumber;
                 bool notstr2 = Int32.TryParse(orbitstr, out orbitNumber);
                 if (notstr2 && orbitNumber >= 1 &&
                 orbitNumber <= 3 && 
-                orbitNumber != Data.RocketListInOrbit[RocketNumber].Header.Space.OrbitRadius)
+                orbitNumber != Data.CurrentLocation.RocketListInOrbit[RocketNumber].Header.Space.OrbitRadius)
                 {
-                    await Task.Run(()=>Data.RocketListInOrbit[RocketNumber].ChangeOrbit(orbitNumber)); // main
+                    await Task.Run(()=>Data.CurrentLocation.RocketListInOrbit[RocketNumber].ChangeOrbit(orbitNumber)); // main
                 }
                 else
                 {

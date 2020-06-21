@@ -1,6 +1,6 @@
 namespace RocketProgramm
 {
-    interface RocketEngine
+    public interface RocketEngine
     {
         void Start();
         void End();

@@ -1,6 +1,6 @@
 namespace RocketProgramm
 {
-    class Coordinates
+    public class Coordinates
     {
         public int OrbitRadius { get; set; } 
         public Planet Object { get; set; }

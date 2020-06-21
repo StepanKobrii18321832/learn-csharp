@@ -1,6 +1,6 @@
 namespace RocketProgramm
 {
-    interface RocketBody
+    public interface RocketBody
     {
         int Weight { get; }
         int FuelVolume { get; }

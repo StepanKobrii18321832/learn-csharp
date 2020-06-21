@@ -15,12 +15,12 @@ namespace RocketProgramm
         public override void Execute(Location CurrentLocation)
         {
             Console.WriteLine("Rocket list");
-            for (int i = 0; i < Data.RocketListInOrbit.Length; i++)
+            for (int i = 0; i < Data.CurrentLocation.RocketListInOrbit.Length; i++)
             {
-                if (Data.RocketListInOrbit[i] != null) Console.WriteLine(i + " " + 
-                Data.RocketListInOrbit[i].Name + 
-                ", Type: " + Data.RocketListInOrbit[i].Header.Type +
-                ", Orbit radius: " + Data.RocketListInOrbit[i].Header.Space.OrbitRadius);
+                if (Data.CurrentLocation.RocketListInOrbit[i] != null) Console.WriteLine(i + " " + 
+                Data.CurrentLocation.RocketListInOrbit[i].Name + 
+                ", Type: " + Data.CurrentLocation.RocketListInOrbit[i].Header.Type +
+                ", Orbit radius: " + Data.CurrentLocation.RocketListInOrbit[i].Header.Space.OrbitRadius);
                 else Console.WriteLine(i);
             }
         }

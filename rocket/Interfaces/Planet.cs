@@ -1,6 +1,6 @@
 namespace RocketProgramm
 {
-    enum Planet
+    public enum Planet
     {
         Earth,
         Moon,

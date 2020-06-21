@@ -1,7 +1,7 @@
 namespace RocketProgramm
 {
 
-    interface RocketHeader
+    public interface RocketHeader
     {
         int Human { get; }
         int Weight { get; }
