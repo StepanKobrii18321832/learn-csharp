@@ -45,6 +45,14 @@ namespace RocketProgramm
             list[RocketIndex] = rocket;
         }
 
+        public static void DeleteRocketList(Rocket[] list, Rocket rocket)
+        {
+            for (int i = 0; i < list.Length; i++)
+            {
+                if (list[i] == rocket) list[i] = null;
+            }
+        }
+
         public static Rocket[] RocketList = {
             new Rocket("Main"),
             new Rocket("Second")
