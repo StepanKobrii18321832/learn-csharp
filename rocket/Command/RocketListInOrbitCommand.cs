@@ -12,7 +12,7 @@ namespace RocketProgramm
             }
         }
 
-        public override void Execute()
+        public override void Execute(Location CurrentLocation)
         {
             Console.WriteLine("Rocket list");
             for (int i = 0; i < Data.RocketListInOrbit.Length; i++)

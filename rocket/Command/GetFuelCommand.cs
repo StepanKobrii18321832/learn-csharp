@@ -14,7 +14,7 @@ namespace RocketProgramm
             }
         }
 
-        public override async void Execute()
+        public override async void Execute(Location CurrentLocation)
         {
             Console.WriteLine("Rocket list (main)");
             for (int i = 0; i < Data.RocketListInOrbit.Length; i++)

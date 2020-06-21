@@ -12,7 +12,7 @@ namespace RocketProgramm
             }
         }
 
-        public override void Execute()
+        public override void Execute(Location CurrentLocation)
         {
             Console.Write("(uwu)");
             Environment.Exit( 0 );
