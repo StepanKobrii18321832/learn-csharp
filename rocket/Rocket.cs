@@ -63,11 +63,11 @@ namespace RocketProgramm
                 await Task.Run(()=>SendingSignal("the beginning of the orbit change maneuver", 100000));
                 Fuel -= 600;
                 //Data.DeleteRocketInOrbit(this);
-                Data.DeleteRocketList(Data.LocationList[Header.Space.Object].RocketListInOrbit, this);
+                Data.DeleteRocketList(ref Data.LocationList[(int)Header.Space.Object].RocketListInOrbit, this);
                 Thread.Sleep(20000);
                 Header.Space.OrbitRadius = orbitNumber;
                 //Data.AddRocketInOrbit(this);
-                Data.AddRocketList(Data.LocationList[Header.Space.Object].RocketListInOrbit, this);
+                Data.AddRocketList(ref Data.LocationList[(int)Header.Space.Object].RocketListInOrbit, this);
                 await Task.Run(()=>SendingSignal("orbit change was successful", 100000));
             }
             else
@@ -107,7 +107,7 @@ namespace RocketProgramm
             //InOrbit = true;
             Header.Space.OrbitRadius = 1;
             //Data.AddRocketInOrbit(this);
-            Data.AddRocketList(Data.LocationList[Header.Space.Object].RocketListInOrbit, this);
+            Data.AddRocketList(ref Data.LocationList[(int)Header.Space.Object].RocketListInOrbit, this);
         }
 
         public async void Launch() // приятного полета по моему коду
@@ -126,7 +126,7 @@ namespace RocketProgramm
             MaxSpeed > 100 && Distance > 100000 && Fuel >= Body.FuelVolume)
             {
                 //Data.DeleteRocket(this); // bug
-                Data.DeleteRocketList(Data.LocationList[Header.Space.Object].RocketList, this);
+                Data.DeleteRocketList(ref Data.LocationList[(int)Header.Space.Object].RocketList, this);
                 await Task.Run(()=>IntoOrbit()); 
             }
             else if (MaxSpeed > 100 && Fuel >= Body.FuelVolume)
@@ -184,7 +184,7 @@ namespace RocketProgramm
             //InOrbit = false;
             Header.Space.OrbitRadius = 0;
             //Data.AddRocket(this);
-            Data.AddRocketList(Data.LocationList[Header.Space.Object].RocketList, this);
+            Data.AddRocketList(ref Data.LocationList[(int)Header.Space.Object].RocketList, this);
         }
 
         public async void Landing()
@@ -193,7 +193,7 @@ namespace RocketProgramm
             Fuel >= 5000) // откуда это значение // нужно исправить
             {
                 //Data.DeleteRocketInOrbit(this);
-                Data.DeleteRocketList(Data.LocationList[Header.Space.Object].RocketListInOrbit, this);
+                Data.DeleteRocketList(ref Data.LocationList[(int)Header.Space.Object].RocketListInOrbit, this);
                 await Task.Run(()=>OnEarth()); 
             }
             else
@@ -207,12 +207,12 @@ namespace RocketProgramm
             if (Header.Space.OrbitRadius == 0)
             {
                 //Data.DeleteRocket(this);
-                Data.DeleteRocketList(Data.LocationList[Header.Space.Object].RocketList, this);
+                Data.DeleteRocketList(ref Data.LocationList[(int)Header.Space.Object].RocketList, this);
                 Thread.Sleep(30000);
                 FuelCostul = true;
                 Console.WriteLine("Rocket " + Name + " refill done");
                 //Data.AddRocket(this);
-                Data.AddRocketList(Data.LocationList[Header.Space.Object].RocketList, this);
+                Data.AddRocketList(ref Data.LocationList[(int)Header.Space.Object].RocketList, this);
             }
             else
             {
@@ -229,8 +229,8 @@ namespace RocketProgramm
                 " fuel and fill its tanks " + precentTank + "%");
                 //Data.DeleteRocketInOrbit(rocket);
                 //Data.DeleteRocketInOrbit(this);
-                Data.DeleteRocketList(Data.LocationList[Header.Space.Object].RocketListInOrbit, rocket);
-                Data.DeleteRocketList(Data.LocationList[Header.Space.Object].RocketListInOrbit, this);
+                Data.DeleteRocketList(ref Data.LocationList[(int)Header.Space.Object].RocketListInOrbit, rocket);
+                Data.DeleteRocketList(ref Data.LocationList[(int)Header.Space.Object].RocketListInOrbit, this);
 
                 Thread.Sleep(30000);
                 rocket.Fuel -= setFuel;
@@ -238,8 +238,8 @@ namespace RocketProgramm
                 Console.WriteLine("Rocket " + Name + " refill done"); 
                 //Data.AddRocketInOrbit(rocket);
                 //Data.AddRocketInOrbit(this);
-                Data.AddRocketList(Data.LocationList[Header.Space.Object].RocketListInOrbit, rocket);
-                Data.AddRocketList(Data.LocationList[Header.Space.Object].RocketListInOrbit, this);
+                Data.AddRocketList(ref Data.LocationList[(int)Header.Space.Object].RocketListInOrbit, rocket);
+                Data.AddRocketList(ref Data.LocationList[(int)Header.Space.Object].RocketListInOrbit, this);
                 }
                 else
                 {

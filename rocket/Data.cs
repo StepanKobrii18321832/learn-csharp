@@ -25,7 +25,7 @@ namespace RocketProgramm
 
        
 
-        public static void AddRocketList(Rocket[] list, Rocket rocket)
+        public static void AddRocketList(ref Rocket[] list, Rocket rocket)
         {
             bool flag = true;
             int RocketIndex = 0;
@@ -45,7 +45,7 @@ namespace RocketProgramm
             list[RocketIndex] = rocket;
         }
 
-        public static void DeleteRocketList(Rocket[] list, Rocket rocket)
+        public static void DeleteRocketList(ref Rocket[] list, Rocket rocket)
         {
             for (int i = 0; i < list.Length; i++)
             {

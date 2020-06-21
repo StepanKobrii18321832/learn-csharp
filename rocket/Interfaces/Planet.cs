@@ -2,8 +2,8 @@ namespace RocketProgramm
 {
     public enum Planet
     {
-        Earth,
-        Moon,
-        Mars
+        Earth = 0,
+        Moon = 1,
+        Mars = 2
     }
 }

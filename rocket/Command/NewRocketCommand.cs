@@ -16,9 +16,9 @@ namespace RocketProgramm
         {
             bool flag = true;
             int RocketIndex = 0;
-            for (int i = 0; i < Data.CurrentLocation.RocketList.Length; i++)
+            for (int i = 0; i < CurrentLocation.RocketList.Length; i++)
             {
-                if (Data.CurrentLocation.RocketList[i] == null && flag) 
+                if (CurrentLocation.RocketList[i] == null && flag) 
                 {
                     RocketIndex = i;
                     flag = false;
@@ -26,17 +26,17 @@ namespace RocketProgramm
             }
             if (flag)
             {
-                Array.Resize(ref Data.CurrentLocation.RocketList, Data.CurrentLocation.RocketList.Length + 1);
-                RocketIndex = Data.CurrentLocation.RocketList.Length - 1;
+                Array.Resize(ref CurrentLocation.RocketList, CurrentLocation.RocketList.Length + 1);
+                RocketIndex = CurrentLocation.RocketList.Length - 1;
             } // search for free space in the array
 
             Console.Write("Name: ");
             string name = Console.ReadLine();
-            Data.CurrentLocation.RocketList[RocketIndex] = new Rocket(name);
+            CurrentLocation.RocketList[RocketIndex] = new Rocket(name);
             Console.WriteLine("Header list");
-            for (int i = 0; i < Data.CurrentLocation.HeaderList.Length; i++)
+            for (int i = 0; i < Data.HeaderList.Length; i++)
             {
-                Console.WriteLine(i + " " + Data.CurrentLocation.HeaderList[i].Name);
+                Console.WriteLine(i + " " + Data.HeaderList[i].Name);
             }
             flag = true;
             while (flag) // ВНИМАНИЕ слабонервным не смотреть
@@ -45,28 +45,28 @@ namespace RocketProgramm
                 string idHeader = Console.ReadLine();
                 int HeaderNumber;
                 bool notstrH = Int32.TryParse(idHeader, out HeaderNumber);
-                if (notstrH && HeaderNumber >= 0 && HeaderNumber < Data.CurrentLocation.HeaderList.Length) 
+                if (notstrH && HeaderNumber >= 0 && HeaderNumber < Data.HeaderList.Length) 
                 {
                     switch (HeaderNumber)
                     {
                         case 0: // я хз как создать новый экземпляр типом как экземпляр класса который в массиве 
-                            Data.CurrentLocation.RocketList[RocketIndex].Header = new HeaderA100(); 
+                            CurrentLocation.RocketList[RocketIndex].Header = new HeaderA100(); 
                             break;
                         case 1: // это только для хедера
-                            Data.CurrentLocation.RocketList[RocketIndex].Header = new HeaderA150();
+                            CurrentLocation.RocketList[RocketIndex].Header = new HeaderA150();
                             break;
                         case 2:
-                            Data.CurrentLocation.RocketList[RocketIndex].Header = new HeaderA190();
+                            CurrentLocation.RocketList[RocketIndex].Header = new HeaderA190();
                             break;
                         case 3:
-                            Data.CurrentLocation.RocketList[RocketIndex].Header = new HeaderG1();
+                            CurrentLocation.RocketList[RocketIndex].Header = new HeaderG1();
                             break;
                         case 4:
-                            Data.CurrentLocation.RocketList[RocketIndex].Header = new HeaderG2();
+                            CurrentLocation.RocketList[RocketIndex].Header = new HeaderG2();
                             break;
                     }
-                    //Data.CurrentLocation.RocketList[RocketIndex].Header = Data.CurrentLocation.HeaderList[HeaderNumber]; // нужно новый а не копия
-                    Data.CurrentLocation.RocketList[RocketIndex].Header.Space = new Coordinates(); // хз, если не свитч то не роботает
+                    //CurrentLocation.RocketList[RocketIndex].Header = CurrentLocation.HeaderList[HeaderNumber]; // нужно новый а не копия
+                    CurrentLocation.RocketList[RocketIndex].Header.Space = new Coordinates(); // хз, если не свитч то не роботает
                     flag = false;
                 }
                 else 
@@ -76,9 +76,9 @@ namespace RocketProgramm
             }
 
             Console.WriteLine("Body list");
-            for (int i = 0; i < Data.CurrentLocation.BodyList.Length; i++)
+            for (int i = 0; i < Data.BodyList.Length; i++)
             {
-                Console.WriteLine(i + " " + Data.CurrentLocation.BodyList[i].Name);
+                Console.WriteLine(i + " " + Data.BodyList[i].Name);
             }
             flag = true;
             while (flag)
@@ -87,9 +87,9 @@ namespace RocketProgramm
                 string idBody = Console.ReadLine();
                 int BodyNumber;
                 bool notstrB = Int32.TryParse(idBody, out BodyNumber);
-                if (notstrB && BodyNumber >= 0 && BodyNumber < Data.CurrentLocation.BodyList.Length)
+                if (notstrB && BodyNumber >= 0 && BodyNumber < Data.BodyList.Length)
                 {
-                    Data.CurrentLocation.RocketList[RocketIndex].Body = Data.CurrentLocation.BodyList[BodyNumber];
+                    CurrentLocation.RocketList[RocketIndex].Body = Data.BodyList[BodyNumber];
                     flag = false;
                 }
                 else
@@ -100,9 +100,9 @@ namespace RocketProgramm
 
 
             Console.WriteLine("Engine list");
-            for (int i = 0; i < Data.CurrentLocation.EngineList.Length; i++)
+            for (int i = 0; i < Data.EngineList.Length; i++)
             {
-                Console.WriteLine(i + " " + Data.CurrentLocation.EngineList[i].Name);
+                Console.WriteLine(i + " " + Data.EngineList[i].Name);
             }
             flag = true;
             while (flag)
@@ -111,9 +111,9 @@ namespace RocketProgramm
                 string idEngine = Console.ReadLine();
                 int EngineNumber;
                 bool notstrE = Int32.TryParse(idEngine, out EngineNumber);
-                if (notstrE && EngineNumber >= 0 && EngineNumber < Data.CurrentLocation.EngineList.Length)
+                if (notstrE && EngineNumber >= 0 && EngineNumber < Data.EngineList.Length)
                 {
-                    Data.CurrentLocation.RocketList[RocketIndex].Engine = Data.CurrentLocation.EngineList[EngineNumber];
+                    CurrentLocation.RocketList[RocketIndex].Engine = Data.EngineList[EngineNumber];
                     flag = false;
                 }
             }

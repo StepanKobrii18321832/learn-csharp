@@ -9,8 +9,8 @@ namespace RocketProgramm
         public static void Main()
         {
 
-            AddRocketlist(LocationList[0].RocketList, new Rocket("Main"));
-            AddRocketlist(LocationList[0].RocketList, new Rocket("Second"));
+            Data.AddRocketList(ref Data.LocationList[0].RocketList, new Rocket("Main"));
+            Data.AddRocketList(ref Data.LocationList[0].RocketList, new Rocket("Second"));
 
             Data.LocationList[0].RocketList[0].Header = Data.HeaderList[1];
             Data.LocationList[0].RocketList[0].Engine = Data.EngineList[1];
