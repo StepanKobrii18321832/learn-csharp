@@ -17,9 +17,33 @@ namespace RocketProgramm
             new ChangeOrbitCommand()
         };
 
-        public static Location EarthLocation = new Location(Planet.Earth, 3);
-        public static Location MoonLocation = new Location(Planet.Moon, 1);
-        public static Location MarsLocation = new Location(Planet.Mars, 2);
+        public static Location[] LocationList = {
+            new Location(Planet.Earth, 3),
+            new Location(Planet.Moon, 1),
+            new Location(Planet.Mars, 2)
+        };
+
+       
+
+        public static void AddRocketList(Rocket[] list, Rocket rocket)
+        {
+            bool flag = true;
+            int RocketIndex = 0;
+            for (int i = 0; i < list.Length; i++)
+            {
+                if (list[i] == null && flag) 
+                {
+                    RocketIndex = i;
+                    flag = false;
+                } 
+            }
+            if (flag)
+            {
+                Array.Resize(ref list, list.Length + 1);
+                RocketIndex = list.Length - 1;
+            }
+            list[RocketIndex] = rocket;
+        }
 
         public static Rocket[] RocketList = {
             new Rocket("Main"),
