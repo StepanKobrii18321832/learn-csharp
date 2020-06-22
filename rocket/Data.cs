@@ -4,6 +4,8 @@ namespace RocketProgramm
 {
     static class Data
     {
+
+        public static Location CurrentLocation { get; set; }
         public static Command[] CommandList = {
             new qCommand(),
             new NewRocketCommand(),
@@ -14,7 +16,9 @@ namespace RocketProgramm
             new LandingCommand(),
             new RefillCommand(),
             new GetFuelCommand(),
-            new ChangeOrbitCommand()
+            new ChangeOrbitCommand(),
+            new CurrentLocationCommand(),
+            new ChangeLocationCommand()
         };
 
         public static Location[] LocationList = {
