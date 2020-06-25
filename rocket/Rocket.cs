@@ -56,6 +56,24 @@ namespace RocketProgramm
             currentDistance + "\nfuel: " + Math.Round(100 * Fuel / Body.FuelVolume, 1) + "%");
         }
 
+        public async void Flight(int NumberLocation)
+        {
+            if (Fuel >= 2000)
+            {
+                await Task.Run(()=>SendingSignal("Exit from orbit", 100000));
+                Fuel -= 2000;
+                Data.DeleteRocketList(ref Data.LocationList[(int)Header.Space.Object].RocketListInOrbit, this);
+                Thread.Sleep(60000);
+                Header.Space.OrbitRadius = 1;
+                Data.AddRocketList(ref Data.LocationList[NumberLocation].RocketListInOrbit, this);
+                await Task.Run(()=>SendingSignal("The flight was successful", 100000));
+            }
+            else
+            {
+                Console.WriteLine("not enough fuel");
+            }
+        }
+
         public async void ChangeOrbit(int orbitNumber)
         {
             if (Fuel >= 600)

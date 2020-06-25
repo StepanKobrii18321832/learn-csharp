@@ -18,7 +18,8 @@ namespace RocketProgramm
             new GetFuelCommand(),
             new ChangeOrbitCommand(),
             new CurrentLocationCommand(),
-            new ChangeLocationCommand()
+            new ChangeLocationCommand(),
+            new FlightCommand()
         };
 
         public static Location[] LocationList = {

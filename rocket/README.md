@@ -1,6 +1,6 @@
 **ROCKET**
 
-```C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe /nologo Main.cs Rocket.cs Interfaces\RocketBody.cs Interfaces\RocketEngine.cs Interfaces\RocketHeader.cs Engines\EngineHF450.cs Headers\HeaderA100.cs Bodies\BodyKyev.cs Engines\EngineHF600.cs Headers\HeaderA150.cs Bodies\BodyKyev-2.cs Interfaces\Command.cs Command\qCommand.cs RocketConsole.cs Command\NewRocketCommand.cs Data.cs Command\RocketListCommand.cs Command\LaunchCommand.cs Command\RocketInfoCommand.cs Bodies\BodyF-1.cs Engines\EnginePRP-4.cs Engines\EngineRRP-4.cs Headers\HeaderA190.cs Command\RocketListInOrbitCommand.cs Command\LandingCommand.cs Command\RefillCommand.cs Headers\HeaderG1.cs Command\GetFuelCommand.cs Interfaces\Сoordinates.cs Interfaces\Planet.cs Command\ChangeOrbitCommand.cs Bodies\BodyF-1A.cs Bodies\BodyL-1.cs Engines\EngineHF800.cs Engines\EnginePRP-5.cs Engines\EngineRRP-5.cs Headers\HeaderG2.cs Command\CurrentLocationCommand.cs Interfaces\Location.cs Command\ChangeLocationCommand.cs```
+```C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe /nologo Main.cs Rocket.cs Interfaces\RocketBody.cs Interfaces\RocketEngine.cs Interfaces\RocketHeader.cs Engines\EngineHF450.cs Headers\HeaderA100.cs Bodies\BodyKyev.cs Engines\EngineHF600.cs Headers\HeaderA150.cs Bodies\BodyKyev-2.cs Interfaces\Command.cs Command\qCommand.cs RocketConsole.cs Command\NewRocketCommand.cs Data.cs Command\RocketListCommand.cs Command\LaunchCommand.cs Command\RocketInfoCommand.cs Bodies\BodyF-1.cs Engines\EnginePRP-4.cs Engines\EngineRRP-4.cs Headers\HeaderA190.cs Command\RocketListInOrbitCommand.cs Command\LandingCommand.cs Command\RefillCommand.cs Headers\HeaderG1.cs Command\GetFuelCommand.cs Interfaces\Сoordinates.cs Interfaces\Planet.cs Command\ChangeOrbitCommand.cs Bodies\BodyF-1A.cs Bodies\BodyL-1.cs Engines\EngineHF800.cs Engines\EnginePRP-5.cs Engines\EngineRRP-5.cs Headers\HeaderG2.cs Command\CurrentLocationCommand.cs Interfaces\Location.cs Command\ChangeLocationCommand.cs Command\FlightCommand.cs```
 
 ```Main.exe```
 
@@ -18,6 +18,7 @@ help
 - rocket change orbit - flies to another orbit
 - location current - shows the current location
 - location change - changes the current location
+- rocket flight - flies to another location
 
 v1.1
 
@@ -85,3 +86,8 @@ v1.6.2
 
 - **new** command "location current"
 - **new** command "location change"
+
+v1.7
+
+- **added** the ability to fly to the Moon and Mars
+- **new** command "rocket flight"
