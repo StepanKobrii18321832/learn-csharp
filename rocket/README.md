@@ -4,7 +4,7 @@
 
 ```Main.exe```
 
-help
+Help
 
 - q - exit
 - rocket list - shows a list of rockets
